@@ -86,7 +86,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- TODO: replace with the official Aroma logo mark once the asset file is available -->
 <link rel="icon" type="image/jpeg" href="assets/img/aroma-logo.jpg">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -94,14 +93,10 @@
 
 <!-- ============ INTRO SPLASH ============ -->
 <!-- Fires once per browser session (sessionStorage-gated) and respects
-     prefers-reduced-motion. The circular placeholder below stands in for
-     the official Aroma logo mark — swap the .ph-photo div for an <img>
-     pointing at the real logo file (e.g. assets/img/aroma-logo.png) the
-     moment it's available. Do not redraw the logo in HTML/CSS. -->
+     prefers-reduced-motion. -->
 <div class="intro-splash" id="introSplash" aria-hidden="true">
   <div class="intro-splash-inner">
-    <div class="intro-logo ph-photo" data-tone="gold"
-         role="img" aria-label="Aroma Bakery & Coffee"></div>
+    <img class="intro-logo" src="assets/img/aroma-logo-mark.png" alt="Aroma Bakery & Coffee" width="861" height="787">
     <p class="intro-subtitle">Bakery • Coffee • Philadelphia</p>
   </div>
 </div>
@@ -119,11 +114,8 @@
       <a href="about.html" class="header-link only-desktop">About</a>
     </div>
 
-    <!-- TODO: once the official logo file is available, replace the two
-         spans below with <img class="header-logo" src="..." alt="Aroma
-         Bakery & Coffee"> instead of recreating the wordmark in type. -->
     <a href="#top" class="header-brand" aria-label="Aroma Bakery & Coffee — home">
-      <img src="assets/img/aroma-logo.jpg" alt="Aroma Bakery & Coffee" class="header-logo" width="120" height="120">
+      <img src="assets/img/aroma-logo-mark.png" alt="Aroma Bakery & Coffee" class="header-logo" width="861" height="787">
     </a>
 
     <div class="header-side header-right">
@@ -192,24 +184,10 @@
        green intro. Decorative/atmosphere footage — the meaningful content
        is the heading and supporting line, not the video itself, so the
        video is aria-hidden and out of tab order; nothing here requires a
-       screen-reader user to interact with a player.
-
-       Swap the placeholder below for the real asset once it's ready:
-
-       <video id="mousseVideo" class="mousse-video" autoplay muted loop
-              playsinline preload="metadata"
-              poster="assets/img/signature-mousse-poster.jpg"
-              aria-hidden="true" tabindex="-1">
-         <source src="assets/video/aroma-signature-mousse.webm" type="video/webm">
-         <source src="assets/video/aroma-signature-mousse.mp4" type="video/mp4">
-       </video>
-
-       main.js already guards for #mousseVideo and will pause it (falling
-       back to the poster frame) under prefers-reduced-motion the moment
-       that element exists — no further JS changes needed when the real
-       video is dropped in. Do not lazy-load the poster/video; this is
-       not the LCP element (the hero is), but it sits right below the
-       fold on most viewports. -->
+       screen-reader user to interact with a player. Separate mobile/
+       desktop cuts via <source media>, evaluated once at load. main.js
+       already guards for #mousseVideo and pauses it (falling back to the
+       poster frame) under prefers-reduced-motion. -->
   <section class="mousse-feature" id="mousse">
     <div class="mousse-head">
       <p class="eyebrow" data-reveal>Made at Aroma</p>
@@ -218,9 +196,13 @@
     </div>
 
     <div class="mousse-frame" data-reveal style="--d:2">
-      <div class="ph-photo mousse-video-placeholder" data-tone="forest"
-           data-caption="SIGNATURE_MOUSSE_VIDEO / SIGNATURE_MOUSSE_POSTER — 6–10s looping video of Aroma's signature mousse desserts (poster doubles as the reduced-motion fallback)"
-           aria-hidden="true"></div>
+      <video id="mousseVideo" class="mousse-video" autoplay muted loop
+             playsinline preload="metadata"
+             poster="assets/img/signature-mousse-poster.webp"
+             aria-hidden="true" tabindex="-1">
+        <source src="assets/video/aroma-signature-mousse-mobile.mp4" type="video/mp4" media="(max-width: 640px)">
+        <source src="assets/video/aroma-signature-mousse-desktop.mp4" type="video/mp4">
+      </video>
     </div>
 
     <a href="menu.html" class="btn btn--dark mousse-cta" data-reveal style="--d:3">Explore the Menu</a>
@@ -315,7 +297,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/img/aroma-logo.jpg" alt="Aroma Bakery & Coffee" class="footer-logo" width="120" height="120">
+        <img src="assets/img/aroma-logo-mark.png" alt="Aroma Bakery & Coffee" class="footer-logo" width="861" height="787">
         <p class="footer-title">Bakery &amp; Coffee</p>
         <p class="footer-loc">Two Philadelphia Locations — Old City &amp; Northeast Philadelphia</p>
         <p class="footer-tagline">Modern, cozy cafe serving housemade desserts, artisan coffee, and teas. Custom cakes for any occasion, available for order.</p>

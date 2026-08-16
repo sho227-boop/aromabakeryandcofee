@@ -278,9 +278,8 @@ h1,h2,h3,p{ margin:0; }
 .intro-logo{
   width:clamp(150px,32vw,320px);
   min-height:0;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  object-fit:cover;
+  aspect-ratio:861/787;
+  object-fit:contain;
   opacity:0;
   filter:blur(6px);
   transform:scale(.97);
@@ -393,16 +392,16 @@ h1,h2,h3,p{ margin:0; }
   transition:color .5s var(--ease), transform .5s var(--ease);
 }
 /* The real Aroma logo mark — a self-contained circular badge (its own
-   dark-forest fill), so it reads correctly over both the transparent
-   hero header and the solid scrolled state without any extra framing. */
+   symbol/type only, no background shape — it reads directly against the
+   header itself, transparent hero or solid scrolled state alike. */
 .header-logo{
-  width:clamp(46px,5.4vw,60px);
-  height:clamp(46px,5.4vw,60px);
-  border-radius:50%;
-  object-fit:cover;
-  transition:width .5s var(--ease), height .5s var(--ease);
+  width:clamp(50px,5.8vw,64px);
+  height:auto;
+  aspect-ratio:861/787;
+  object-fit:contain;
+  transition:width .5s var(--ease);
 }
-.site-header.is-scrolled .header-logo{ width:40px; height:40px; }
+.site-header.is-scrolled .header-logo{ width:44px; }
 .brand-line--main{
   font-family:var(--font-serif);
   font-weight:600;
@@ -1117,7 +1116,7 @@ a.location-value:hover{ opacity:.6; }
 .footer-inner{ max-width:var(--container); margin:0 auto; padding:clamp(50px,8vw,80px) var(--gutter) 30px; position:relative; z-index:1; }
 .footer-top{ display:flex; flex-wrap:wrap; gap:24px 40px; justify-content:space-between; align-items:flex-start; padding-bottom:32px; border-bottom:1px solid rgba(183,160,106,.2); }
 .footer-links{ padding-top:2px; }
-.footer-logo{ width:56px; height:56px; border-radius:50%; object-fit:cover; margin-bottom:14px; }
+.footer-logo{ width:64px; height:auto; aspect-ratio:861/787; object-fit:contain; margin-bottom:14px; }
 .footer-title{ font-family:var(--font-serif); font-size:24px; font-weight:600; color:var(--gold); }
 .footer-loc{ color:var(--pale-sage); margin-top:4px; font-size:14px; }
 .footer-tagline{ max-width:42ch; margin-top:14px; font-size:14px; line-height:1.6; color:var(--pale-sage); opacity:.85; }
