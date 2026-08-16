@@ -17,14 +17,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2318352D'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='%23F4EFE6' font-family='Georgia,serif'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/jpeg" href="assets/img/aroma-logo.jpg">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
 <div class="intro-splash" id="introSplash" aria-hidden="true">
   <div class="intro-splash-inner">
-    <div class="intro-logo ph-photo" data-tone="gold" role="img" aria-label="Aroma Bakery & Coffee"></div>
+    <img class="intro-logo" src="assets/img/aroma-logo.jpg" alt="Aroma Bakery & Coffee" width="320" height="320">
     <p class="intro-subtitle">Bakery • Coffee • Philadelphia</p>
   </div>
 </div>
@@ -42,8 +42,7 @@
     </div>
 
     <a href="index.html" class="header-brand" aria-label="Aroma Bakery & Coffee — home">
-      <span class="brand-line brand-line--main">Aroma</span>
-      <span class="brand-line brand-line--sub">Bakery &amp; Coffee</span>
+      <img src="assets/img/aroma-logo.jpg" alt="Aroma Bakery & Coffee" class="header-logo" width="120" height="120">
     </a>
 
     <div class="header-side header-right">
@@ -234,32 +233,26 @@
       <div class="menu-panel" id="panel-coffee" role="tabpanel" hidden>
 
         <!-- These three are finished menu graphics, not text lists — the
-             actual Coffee & Espresso / Tea / Matcha artwork, shown full
-             size. Swap each placeholder for:
-             <img class="drink-menu-art" src="assets/img/menu-coffee-espresso.jpg"
-                  alt="Aroma Bakery & Coffee Coffee and Espresso menu"
-                  width="1200" height="1600" loading="lazy">
-             (adjust width/height to the real artwork's intrinsic size to
-             avoid layout shift). Do not alter, recrop, or recreate the
-             artwork itself — display it as supplied. -->
+             actual uploaded Coffee & Espresso / Tea / Matcha artwork, shown
+             full size, unaltered. -->
         <div class="drink-menu-gallery">
           <div class="drink-menu-block" data-reveal>
             <p class="eyebrow">Menu</p>
-            <div class="drink-menu-art ph-photo" data-tone="forest"
-                 data-caption="Coffee & Espresso menu artwork — full uploaded graphic"
-                 role="img" aria-label="Aroma Bakery & Coffee Coffee and Espresso menu"></div>
+            <img class="drink-menu-art" src="assets/img/menu-coffee-espresso.jpg"
+                 alt="Aroma Bakery & Coffee Coffee and Espresso menu"
+                 width="1024" height="1536" loading="lazy">
           </div>
           <div class="drink-menu-block" data-reveal style="--d:1">
             <p class="eyebrow">Menu</p>
-            <div class="drink-menu-art ph-photo" data-tone="sage"
-                 data-caption="Tea menu artwork — full uploaded graphic"
-                 role="img" aria-label="Aroma Bakery & Coffee Tea menu"></div>
+            <img class="drink-menu-art" src="assets/img/menu-tea.jpg"
+                 alt="Aroma Bakery & Coffee Tea menu"
+                 width="1024" height="1536" loading="lazy">
           </div>
           <div class="drink-menu-block" data-reveal style="--d:2">
             <p class="eyebrow">Menu</p>
-            <div class="drink-menu-art ph-photo" data-tone="gold"
-                 data-caption="Matcha menu artwork — full uploaded graphic"
-                 role="img" aria-label="Aroma Bakery & Coffee Matcha menu"></div>
+            <img class="drink-menu-art" src="assets/img/menu-matcha.jpg"
+                 alt="Aroma Bakery & Coffee Matcha menu"
+                 width="1024" height="1536" loading="lazy">
           </div>
         </div>
 
@@ -281,6 +274,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
+        <img src="assets/img/aroma-logo.jpg" alt="Aroma Bakery & Coffee" class="footer-logo" width="120" height="120">
         <p class="footer-title">Bakery &amp; Coffee</p>
         <p class="footer-loc">Two Philadelphia Locations — Old City &amp; Northeast Philadelphia</p>
         <p class="footer-tagline">Modern, cozy cafe serving housemade desserts, artisan coffee, and teas. Custom cakes for any occasion, available for order.</p>

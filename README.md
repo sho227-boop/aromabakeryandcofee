@@ -8,28 +8,23 @@ deliberately simplified homepage), `menu.html` (the full menu),
 
 ## ⚠️ Before this goes live
 
-1. **Real assets seen but not yet committed: the official logo and a
-   storefront photo.** Both were shared as chat images, which this
-   environment cannot save to disk as files — there was no accessible
-   upload path to read their bytes from. Everything is wired up and ready
-   for them:
-   - **Logo** — used in the intro splash (`.intro-logo`, present on every
-     page, a circular placeholder right now) and referenced in a `TODO`
-     comment next to `.header-brand` for the header wordmark. Save the real
-     file to `assets/img/aroma-logo.png` (or `.svg`) and swap both spots
-     for `<img>` tags — do not redraw the logo in HTML/CSS, per the brief.
-   - **Storefront photo** — the homepage hero image (`.hero-img` in
-     `index.html`) has a `TODO` comment showing the exact `<img>` markup to
-     drop in (`assets/img/hero-storefront.jpg`, `fetchpriority="high"`, no
-     lazy-loading — it's the LCP element).
-   - All other product/interior photos remain generic labeled placeholders
-     (`.ph-photo`, `data-caption` describes what belongs there, several
-     carry dev-only labels like `MENU_DESSERTS`, `CUSTOM_CAKE_HERO` — strip
-     those labels once real assets are in) — none of those were supplied
-     yet.
-   - **Signature mousse video** — see the dedicated section below; this one
-     isn't a photo swap, it's a `<video>` element that doesn't exist in the
-     DOM yet.
+1. **Real assets now committed: the official logo and the three drink-menu
+   graphics.** All four live in `assets/img/`:
+   - **`aroma-logo.jpg`** — the real Aroma mark (circular badge, dark forest
+     fill, gold linework/typography, unaltered). Wired in as a real `<img>`
+     everywhere it belongs: the intro splash on every page, the header
+     brand mark (replacing the old text lockup), the footer, and the
+     favicon. Not redrawn, not distorted — displayed via `object-fit:cover`
+     inside a circular crop at each size it appears.
+   - **`menu-coffee-espresso.jpg` / `menu-tea.jpg` / `menu-matcha.jpg`** —
+     the real, finished drink-menu artwork, displayed full size and
+     unaltered on `menu.html`'s Drinks tab (`object-fit:contain`, no
+     recropping, no rewritten prices).
+   - Everything else (product/interior photography, the hero storefront
+     shot, the 7 custom-cake photos, About/Locations photography, the
+     signature mousse video) remains generic labeled `.ph-photo`
+     placeholders — none of those have been supplied yet. Swap each one for
+     a real `<img>` per "Swapping in real photos" below.
 2. **Business facts are real and confirmed** — both locations' addresses,
    phone `(445) 245-9284` / `tel:+14452459284`, hours (every day,
    9:00 AM – 6:00 PM at both locations), and the contact email
@@ -56,12 +51,6 @@ deliberately simplified homepage), `menu.html` (the full menu),
    ordering number is known, put it in that one constant (digits only,
    international format, e.g. `"12155551234"`) and every `.whatsapp-cta`
    link on the site updates automatically.
-5. **Logo still not on disk.** A screenshot of the real Aroma logo was
-   shared in chat, but this environment has no path to read chat-attached
-   image bytes from disk — there was nothing to save. The intro splash
-   (`.intro-logo`, every page) and the header wordmark remain a placeholder/
-   text lockup pending the real logo file (see the `TODO` comments next to
-   both in `index.html`).
 
 Swap remaining photo placeholders by replacing each `.ph-photo` div's classes
 with a real `<img>` (see "Swapping in real photos" below). Nothing else needs
