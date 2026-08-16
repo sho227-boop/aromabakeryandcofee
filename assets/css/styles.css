@@ -955,61 +955,30 @@ a.location-value:hover{ opacity:.6; }
 .whatsapp-cta svg{ flex-shrink:0; }
 
 /* =========================================================
-   ABOUT PAGE
+   ABOUT PAGE — single dark image hero + short intro, deliberately simple
    ========================================================= */
 .about-hero{
+  position:relative;
   padding-top:var(--header-h);
-  display:grid;
-  grid-template-columns:1fr;
-  background:var(--ivory);
-}
-@media (min-width:900px){
-  .about-hero{ grid-template-columns:1.05fr .95fr; align-items:center; }
-}
-.about-hero-head{ padding:clamp(48px,8vw,90px) var(--gutter); }
-.about-hero-head .body-lg{ margin-top:4px; }
-.about-hero-photo{ aspect-ratio:4/3; }
-@media (min-width:900px){ .about-hero-photo{ aspect-ratio:auto; height:100%; min-height:480px; } }
-
-.about-split{
-  background:var(--cream);
-  display:grid;
-  grid-template-columns:1fr;
-}
-@media (min-width:900px){
-  .about-split{ grid-template-columns:1fr 1fr; align-items:center; }
-}
-.about-split-photo{ aspect-ratio:4/3; }
-@media (min-width:900px){ .about-split-photo{ aspect-ratio:auto; height:100%; min-height:440px; } }
-.about-split-copy{ padding:clamp(44px,7vw,80px) var(--gutter); }
-.about-split-copy .body-md{ margin-top:12px; }
-
-.about-gallery{ background:var(--ivory); padding:clamp(60px,9vw,100px) var(--gutter); }
-.about-gallery-grid{
-  max-width:var(--container); margin:0 auto;
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:clamp(12px,1.6vw,20px);
-}
-.about-gallery-item{ aspect-ratio:3/4; border-radius:2px; overflow:hidden; }
-@media (max-width:768px){
-  .about-gallery-grid{ grid-template-columns:1fr 1fr; }
-  .about-gallery-item:first-child{ grid-column:1/-1; aspect-ratio:16/9; }
-}
-
-.about-closing{
-  background:var(--cream);
+  min-height:calc(var(--header-h) + 380px);
+  display:flex; align-items:center; justify-content:center;
   text-align:center;
-  padding:clamp(90px,14vw,150px) var(--gutter);
+  overflow:hidden;
 }
-.about-closing-line{
-  font-family:var(--font-serif); font-weight:600; color:var(--forest);
-  font-size:clamp(26px,4vw,48px); line-height:1.2;
-  max-width:16ch; margin:0 auto 18px;
+@media (min-width:900px){ .about-hero{ min-height:calc(var(--header-h) + 480px); } }
+.about-hero .ph-photo{ position:absolute; inset:0; z-index:0; }
+.about-hero-overlay{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(16,39,32,.6), rgba(16,39,32,.78));
 }
-.about-closing-sub{
-  font-size:13px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--forest-2); font-weight:600;
-}
+.about-hero-inner{ position:relative; z-index:2; padding:32px var(--gutter); max-width:720px; margin:0 auto; }
+.about-hero-inner .eyebrow{ color:var(--sage); }
+.about-hero-inner .display-lg{ color:var(--cream); }
+.about-hero-inner .body-lg{ color:var(--pale-sage); margin:14px auto 0; }
+
+.about-intro{ background:var(--ivory); padding:clamp(56px,9vw,100px) var(--gutter) clamp(70px,10vw,110px); }
+.about-intro-inner{ max-width:640px; margin:0 auto; text-align:center; }
+.about-intro-inner p + p{ margin-top:18px; }
 
 /* =========================================================
    LOCATIONS PAGE

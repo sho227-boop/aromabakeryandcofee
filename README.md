@@ -92,9 +92,10 @@ final photography.
   a 7-image mixed editorial gallery (`.cc-item-1`…`.cc-item-7`, one hero +
   supporting + wide + balanced portrait/landscape) → a closing "Order on
   WhatsApp" CTA. Reachable from every page's nav. Not a homepage section.
-- `about.html` — a dedicated About page: photo + short intro (2–3
-  paragraphs, no invented history), an editorial image/text split, a small
-  3-photo gallery, and a quiet closing statement before the footer.
+- `about.html` — deliberately minimal: one dark, low-exposure image hero
+  ("OUR STORY" / "Aroma Bakery & Coffee" / one short supporting line) and a
+  short 2-paragraph intro directly below it. No image/text split, no
+  gallery, no closing quote section — kept intentionally short.
 - `locations.html` — a dedicated Locations page: wide photographic hero →
   a single map showing both real addresses (a key-free Google Maps
   directions-embed between the two locations) → a short "Explore Our
@@ -102,8 +103,10 @@ final photography.
   divider, description, address, hours, "Get Directions →"). The header/
   mobile-nav/footer "Locations" link on every page points here — it no
   longer scrolls to a homepage anchor.
-- `privacy.html` / `terms.html` — legal pages; nav/footer updated to match
-  the rest of the site (About, Custom Cakes, Locations links added).
+- `privacy.html` / `terms.html` — still exist on disk (generic unreviewed
+  legal templates) but are intentionally **not linked** anywhere in the
+  customer-facing site (nav, mobile nav, or footer) — reachable only by
+  direct URL.
 
 ### Design system
 
@@ -150,12 +153,12 @@ final photography.
   anywhere specifics aren't confirmed, copy says "ask about today's
   selection" / "call for details." The menu intro also notes that
   "selection and availability may vary by location."
-- **Footer** (same on every page) links to `privacy.html` and `terms.html`
-  (generic legal boilerplate, `noindex`, clearly marked as unreviewed
-  templates — get these looked at by an attorney before relying on them)
-  and credits "Created by CROWNE Creative" → https://crownecreative.com at
-  the very bottom. All external links (Instagram, Maps, CROWNE Creative)
-  use `rel="noopener noreferrer"`.
+- **Footer** (same on every page) keeps to customer-facing links only —
+  Home, Menu, About, Custom Cakes, Locations, Contact, Instagram — and
+  credits "Created by CROWNE Creative" → https://crownecreative.com at the
+  very bottom, kept small and understated. `privacy.html`/`terms.html` are
+  deliberately not linked (see "Site map" above). All external links
+  (Instagram, Maps, CROWNE Creative) use `rel="noopener noreferrer"`.
 - **Locations** — one brand, two Philadelphia locations, each with its own
   address/hours/Get-Directions link, now on a dedicated `locations.html`
   (see "Site map" above) rather than a homepage anchor section.
@@ -226,10 +229,12 @@ index.html              Homepage — intro, hero, signature mousse video
                          photo, small locations link, Follow Aroma, footer
 menu.html               Full tabbed menu (editorial dessert panels + drink art slots)
 custom-cakes.html       Dedicated Custom Cakes page (7-image gallery, WhatsApp CTA)
-about.html              Dedicated About page (intro, image/text split, gallery, closing)
+about.html              Dedicated About page — one dark image hero + short intro only
 locations.html          Dedicated Locations page (hero, map, two location cards)
-privacy.html            Generic privacy policy (noindex, unreviewed template)
-terms.html              Generic terms of use (noindex, unreviewed template)
+privacy.html            Generic privacy policy (noindex, unreviewed template,
+                         intentionally unlinked from the site)
+terms.html              Generic terms of use (noindex, unreviewed template,
+                         intentionally unlinked from the site)
 assets/css/styles.css   Design system + all section styles + animations
 assets/css/legal.css    Minimal styles for privacy.html / terms.html
 assets/js/main.js       Intro splash, header transition, mobile nav, scroll
