@@ -120,22 +120,23 @@
     }, { passive: true });
   }
 
-  /* ---------- Bakery case panorama pan ---------- */
-  const pano = document.getElementById('panoImg');
-  if (pano && !reduceMotion) {
-    let ticking2 = false;
-    const applyPan = () => {
-      const rect = pano.parentElement.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = Math.min(1, Math.max(0, 1 - (rect.top + rect.height) / (vh + rect.height)));
-      const shift = (progress - 0.5) * 60; // px
-      pano.style.transform = `translateY(${shift}px)`;
-      ticking2 = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking2) { requestAnimationFrame(applyPan); ticking2 = true; }
-    }, { passive: true });
-    applyPan();
+  /* ---------- Signature mousse video ---------- */
+  /* Inert until the real <video id="mousseVideo"> replaces the homepage
+     placeholder (see the comment above .mousse-feature in index.html) —
+     document.getElementById returns null against the current placeholder
+     div, so this is a no-op today and activates automatically once the
+     video element exists. Under prefers-reduced-motion: don't autoplay;
+     pause on a still frame (falls back to the poster) instead. */
+  const mousseVideo = document.getElementById('mousseVideo');
+  if (mousseVideo) {
+    if (reduceMotion) {
+      mousseVideo.removeAttribute('autoplay');
+      mousseVideo.pause();
+    } else {
+      // Some browsers still block autoplay depending on context; retry
+      // once, and just leave the poster showing if it's refused.
+      mousseVideo.play().catch(() => {});
+    }
   }
 
   /* ---------- Menu tabs ---------- */

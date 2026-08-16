@@ -116,7 +116,7 @@
         <span class="menu-trigger-lines" aria-hidden="true"><span></span><span></span></span>
         <span class="menu-trigger-label">Menu</span>
       </button>
-      <a href="#story" class="header-link only-desktop">About</a>
+      <a href="#mousse" class="header-link only-desktop">About</a>
     </div>
 
     <!-- TODO: once the official logo file is available, replace the two
@@ -140,7 +140,7 @@
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
   <ul class="mobile-nav-list">
     <li style="--i:0"><a href="menu.html">Menu</a></li>
-    <li style="--i:1"><a href="#story">About</a></li>
+    <li style="--i:1"><a href="#mousse">About</a></li>
     <li style="--i:2"><a href="custom-cakes.html">Custom Cakes</a></li>
     <li style="--i:3"><a href="#locations">Locations</a></li>
     <li style="--i:4"><a href="tel:+14452459284">Call Us</a></li>
@@ -182,36 +182,49 @@
       </div>
     </div>
 
-    <a href="#story" class="scroll-cue" aria-label="Scroll to discover">
+    <a href="#mousse" class="scroll-cue" aria-label="Scroll to discover">
       <span>Scroll to discover</span>
       <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true"><path d="M1 1l5 17 5-17" stroke="currentColor" stroke-width="1.2"/></svg>
     </a>
   </section>
 
-  <!-- ============ EDITORIAL MOVING STRIP ============ -->
-  <!-- The one deliberate exception to "no sliding motion": a slow,
-       continuous, seamlessly-looping photography strip. Two identical
-       copies of the same 5 images (the second marked aria-hidden +
-       .editorial-dup) sit back to back; translating -50% loops perfectly.
-       Under prefers-reduced-motion the animation stops, the duplicate
-       set is hidden, and the single set wraps into a static composition. -->
-  <section class="editorial-strip" id="story">
-    <p class="eyebrow">Made at Aroma</p>
-    <div class="editorial-viewport">
-      <div class="editorial-track">
-        <div class="ph-photo editorial-item editorial-item--portrait" data-tone="forest" data-caption="EDITORIAL_01 — signature mousse dessert" role="img" aria-label="Placeholder — signature mousse dessert"></div>
-        <div class="ph-photo editorial-item editorial-item--landscape" data-tone="beige" data-caption="EDITORIAL_02 — tartlet" role="img" aria-label="Placeholder — tartlet"></div>
-        <div class="ph-photo editorial-item editorial-item--tall" data-tone="chocolate" data-caption="EDITORIAL_03 — pastry" role="img" aria-label="Placeholder — pastry"></div>
-        <div class="ph-photo editorial-item editorial-item--square" data-tone="sage" data-caption="EDITORIAL_04 — coffee" role="img" aria-label="Placeholder — coffee"></div>
-        <div class="ph-photo editorial-item editorial-item--wide" data-tone="gold" data-caption="EDITORIAL_05 — bread / baked item" role="img" aria-label="Placeholder — fresh baked bread"></div>
+  <!-- ============ SIGNATURE MOUSSE VIDEO FEATURE ============ -->
+  <!-- The homepage's second (and last) deliberate motion moment, after the
+       green intro. Decorative/atmosphere footage — the meaningful content
+       is the heading and supporting line, not the video itself, so the
+       video is aria-hidden and out of tab order; nothing here requires a
+       screen-reader user to interact with a player.
 
-        <div class="ph-photo editorial-item editorial-item--portrait editorial-dup" data-tone="forest" aria-hidden="true"></div>
-        <div class="ph-photo editorial-item editorial-item--landscape editorial-dup" data-tone="beige" aria-hidden="true"></div>
-        <div class="ph-photo editorial-item editorial-item--tall editorial-dup" data-tone="chocolate" aria-hidden="true"></div>
-        <div class="ph-photo editorial-item editorial-item--square editorial-dup" data-tone="sage" aria-hidden="true"></div>
-        <div class="ph-photo editorial-item editorial-item--wide editorial-dup" data-tone="gold" aria-hidden="true"></div>
-      </div>
+       Swap the placeholder below for the real asset once it's ready:
+
+       <video id="mousseVideo" class="mousse-video" autoplay muted loop
+              playsinline preload="metadata"
+              poster="assets/img/signature-mousse-poster.jpg"
+              aria-hidden="true" tabindex="-1">
+         <source src="assets/video/aroma-signature-mousse.webm" type="video/webm">
+         <source src="assets/video/aroma-signature-mousse.mp4" type="video/mp4">
+       </video>
+
+       main.js already guards for #mousseVideo and will pause it (falling
+       back to the poster frame) under prefers-reduced-motion the moment
+       that element exists — no further JS changes needed when the real
+       video is dropped in. Do not lazy-load the poster/video; this is
+       not the LCP element (the hero is), but it sits right below the
+       fold on most viewports. -->
+  <section class="mousse-feature" id="mousse">
+    <div class="mousse-head">
+      <p class="eyebrow" data-reveal>Made at Aroma</p>
+      <h2 class="display-lg" data-reveal>Look Twice.<br>It's Dessert.</h2>
+      <p class="mousse-sub" data-reveal style="--d:1">Discover our signature mousse creations.</p>
     </div>
+
+    <div class="mousse-frame" data-reveal style="--d:2">
+      <div class="ph-photo mousse-video-placeholder" data-tone="forest"
+           data-caption="SIGNATURE_MOUSSE_VIDEO / SIGNATURE_MOUSSE_POSTER — 6–10s looping video of Aroma's signature mousse desserts (poster doubles as the reduced-motion fallback)"
+           aria-hidden="true"></div>
+    </div>
+
+    <a href="menu.html" class="btn btn--dark mousse-cta" data-reveal style="--d:3">Explore the Menu</a>
   </section>
 
   <!-- ============ MENU INTRODUCTION ============ -->

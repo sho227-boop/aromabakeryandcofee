@@ -23,9 +23,12 @@ deliberately simplified homepage), `menu.html` (the full menu),
      lazy-loading — it's the LCP element).
    - All other product/interior photos remain generic labeled placeholders
      (`.ph-photo`, `data-caption` describes what belongs there, several
-     carry dev-only labels like `EDITORIAL_01`, `MENU_DESSERTS`,
-     `CUSTOM_CAKE_HERO` — strip those labels once real assets are in) —
-     none of those were supplied yet.
+     carry dev-only labels like `MENU_DESSERTS`, `CUSTOM_CAKE_HERO` — strip
+     those labels once real assets are in) — none of those were supplied
+     yet.
+   - **Signature mousse video** — see the dedicated section below; this one
+     isn't a photo swap, it's a `<video>` element that doesn't exist in the
+     DOM yet.
 2. **Business facts are real and confirmed** — both locations' addresses,
    phone `(445) 245-9284` / `tel:+14452459284`, hours, and the contact email
    `aromabakerycoffe@gmail.com` (spelled exactly as provided, do not "fix"
@@ -54,11 +57,11 @@ final photography.
 ### Site map
 
 - `index.html` — the **homepage**, deliberately restrained: intro splash →
-  hero (one image, one line, one CTA) → editorial moving photo strip → menu
-  category teasers (4 cards) → one atmosphere photo → locations → a small
-  curated "Follow Aroma" section → footer. No Custom Cakes section, no
-  detailed menu, no "two locations" headline copy — those live on their own
-  pages/sections instead, per the "let the imagery do the work, don't
+  hero (one image, one line, one CTA) → signature mousse video feature →
+  menu category teasers (4 cards) → one atmosphere photo → locations → a
+  small curated "Follow Aroma" section → footer. No Custom Cakes section,
+  no detailed menu, no "two locations" headline copy — those live on their
+  own pages/sections instead, per the "let the imagery do the work, don't
   explain everything" direction.
 - `menu.html` — the full tabbed menu (Sweet / Bread / Breakfast / Lunch /
   Coffee), moved off the homepage wholesale. Supports deep links from the
@@ -85,21 +88,29 @@ final photography.
   slight blur+scale, then a subtitle, then dismisses itself after ~2.6s.
   Shows once per browser session via `sessionStorage`, and collapses to a
   fast plain fade under `prefers-reduced-motion`.
-- **Editorial moving strip** (`#story` on the homepage) — the site's one
-  deliberate exception to "no sliding motion": a slow (46s per loop, 64s on
-  mobile), continuously-looping photography strip, pure CSS `transform`,
-  no JS/carousel library. Two identical copies of the same 5 mixed-aspect-
-  ratio images sit back to back in `.editorial-track`; translating exactly
-  `-50%` loops seamlessly since both halves are pixel-identical. Under
-  `prefers-reduced-motion` the animation stops, the duplicate copy is
-  hidden (`.editorial-dup`), and the single set wraps into a static grid —
-  content stays, only the motion goes.
+- **Signature mousse video feature** (`#mousse` on the homepage,
+  immediately after the hero) — the site's second and last deliberate
+  motion moment after the green intro. `.mousse-video-placeholder` stands
+  in for a real `<video id="mousseVideo">` (autoplay/muted/loop/playsinline,
+  no controls, `preload="metadata"`, not the LCP element) — the exact
+  markup to drop in is in an HTML comment right above `.mousse-feature` in
+  `index.html`. It's purely decorative/atmosphere footage: `aria-hidden`
+  and out of tab order, with the heading + one-line supporting copy
+  carrying the actual meaning, so no screen-reader user is ever required
+  to interact with a player. `main.js` already contains the
+  `prefers-reduced-motion` handling for it (pauses instead of autoplaying,
+  falls back to the `poster` frame) — guarded on `getElementById`, so it's
+  a no-op today and activates automatically the moment the real `<video>`
+  replaces the placeholder div. No further JS changes needed. Framed at
+  16:9 desktop / 4:3 tablet (≤1024px) / 4:5 mobile (≤640px), `object-fit:
+  cover`, generous cream space around it — not a full-bleed background.
 - **Motion** — IntersectionObserver-driven reveals (opacity + translateY),
   a subtle hero cinematic zoom, header shrink-on-scroll, mobile full-screen
   nav with staggered link entrance (scrollable if content exceeds the
-  viewport), and the editorial strip above. That's the whole motion system
-  — everything else is a small hover/transition, matching the "only three
-  noticeable types of movement" direction.
+  viewport), and the mousse video above. That's the whole motion system —
+  everything else is a small hover/transition, matching the "only two
+  memorable motion moments" direction (green intro, then real food in
+  motion).
 - **Menu content** covers every category from the brief (Signature Mousse
   Cakes, Russian & European Cakes, Individual Desserts, Macarons,
   Tartlets, Rolls & Pastries, Cookies, Custom Cakes & Celebrations, Breads,
@@ -148,6 +159,26 @@ treatment (add `object-fit:cover` in CSS if switching to `<img>`) keep
 working. Use real, unedited Aroma photography — crop out any Instagram UI
 chrome before use.
 
+## Adding the signature mousse video
+
+Replace the `.mousse-video-placeholder` div in `index.html` (inside
+`.mousse-frame`) with the `<video>` markup already written out in the HTML
+comment directly above `.mousse-feature`. In short:
+
+```html
+<video id="mousseVideo" class="mousse-video" autoplay muted loop playsinline
+       preload="metadata" poster="assets/img/signature-mousse-poster.jpg"
+       aria-hidden="true" tabindex="-1">
+  <source src="assets/video/aroma-signature-mousse.webm" type="video/webm">
+  <source src="assets/video/aroma-signature-mousse.mp4" type="video/mp4">
+</video>
+```
+
+Target a 6–10s clip, no audio track, optimized MP4/H.264 (+ WebM if
+practical) at a resolution appropriate for a ~960px-wide display frame —
+don't ship a 4K source. `main.js`'s reduced-motion handling picks this
+element up automatically by `id`; nothing else needs to change.
+
 ## Running locally
 
 No build step — just serve the folder:
@@ -160,8 +191,8 @@ python3 -m http.server 8000
 ## Files
 
 ```
-index.html              Homepage — intro, hero, editorial strip, menu teasers,
-                         locations, Follow Aroma, footer
+index.html              Homepage — intro, hero, signature mousse video
+                         feature, menu teasers, locations, Follow Aroma, footer
 menu.html               Full tabbed menu
 custom-cakes.html       Dedicated Custom Cakes page
 privacy.html            Generic privacy policy (noindex, unreviewed template)

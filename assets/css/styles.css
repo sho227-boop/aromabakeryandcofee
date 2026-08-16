@@ -529,56 +529,42 @@ section{ position:relative; }
 }
 
 /* =========================================================
-   EDITORIAL MOVING STRIP
-   The homepage's one deliberate exception to "no sliding motion": a slow,
-   continuously-looping photography strip. Two identical copies of the
-   same 5 images sit back-to-back in .editorial-track; translating exactly
-   -50% (one copy's width) loops seamlessly regardless of viewport size,
-   since both halves are pixel-identical. Pure transform animation — no
-   JS, no carousel library.
+   SIGNATURE MOUSSE VIDEO FEATURE
+   The homepage's second (and last) deliberate motion moment, after the
+   green intro — one restrained, muted, looping video framed by generous
+   cream space, not a full-bleed background. Autoplay/pause behavior for
+   the real <video> is handled in main.js once that element exists;
+   nothing here needs to change when the placeholder is swapped in.
    ========================================================= */
-.editorial-strip{ background:var(--ivory); padding:clamp(60px,9vw,110px) 0 0; }
-.editorial-strip .eyebrow{ max-width:var(--container); margin:0 auto clamp(20px,3vw,32px); padding:0 var(--gutter); }
-.editorial-viewport{ overflow:hidden; }
-.editorial-track{
-  display:flex;
-  align-items:flex-end;
-  gap:clamp(12px,1.8vw,24px);
-  width:max-content;
-  padding:0 var(--gutter);
-  animation:editorialMarquee 46s linear infinite;
+.mousse-feature{
+  background:var(--cream);
+  text-align:center;
+  padding:clamp(70px,10vw,120px) var(--gutter) clamp(80px,11vw,130px);
 }
-@keyframes editorialMarquee{
-  from{ transform:translate3d(0,0,0); }
-  to{ transform:translate3d(-50%,0,0); }
-}
-.editorial-item{
-  flex-shrink:0;
-  width:auto; /* .ph-photo sets width:100%, which would stretch each item
-                 to the full track width — override so aspect-ratio + the
-                 explicit height below actually control each item's size. */
-  height:clamp(240px,32vw,420px);
+.mousse-head{ max-width:640px; margin:0 auto clamp(40px,6vw,64px); }
+.mousse-sub{ font-size:clamp(15px,1.6vw,18px); color:var(--forest-2); margin-top:14px; }
+
+.mousse-frame{
+  max-width:960px;
+  margin:0 auto clamp(36px,5vw,56px);
+  aspect-ratio:16/9;
   border-radius:2px;
   overflow:hidden;
+  background:var(--forest-deep);
 }
-.editorial-item--portrait{ aspect-ratio:3/4; }
-.editorial-item--landscape{ aspect-ratio:4/3; }
-.editorial-item--tall{ aspect-ratio:2/3; }
-.editorial-item--square{ aspect-ratio:1/1; }
-.editorial-item--wide{ aspect-ratio:16/10; }
-
+.mousse-video,
+.mousse-video-placeholder{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+@media (max-width:1024px){
+  .mousse-frame{ aspect-ratio:4/3; }
+}
 @media (max-width:640px){
-  .editorial-track{ animation-duration:64s; }
-  .editorial-item{ height:clamp(200px,58vw,280px); }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .editorial-track{
-    animation:none;
-    flex-wrap:wrap;
-    width:auto;
-  }
-  .editorial-dup{ display:none; }
+  .mousse-frame{ aspect-ratio:4/5; }
 }
 
 /* ---------- Homepage menu-world categories ---------- */
