@@ -189,6 +189,28 @@
     }
   }
 
+  /* ---------- WhatsApp ordering CTA ---------- */
+  /* The real Aroma ordering number has not been supplied yet — replace the
+     placeholder below with the correct number in international format
+     (digits only, e.g. "12155551234") once known. Every element with the
+     .whatsapp-cta class gets its href built from this single constant, so
+     there is exactly one place to update. Until then the links are left
+     pointing at "#" (inert) rather than a guessed/fake number. */
+  const WHATSAPP_NUMBER = 'REPLACE_WITH_AROMA_WHATSAPP_NUMBER';
+  const whatsappLinks = document.querySelectorAll('.whatsapp-cta');
+  if (whatsappLinks.length) {
+    const isConfigured = /^\d{7,15}$/.test(WHATSAPP_NUMBER);
+    whatsappLinks.forEach(a => {
+      if (isConfigured) {
+        const message = encodeURIComponent('Hi! I\'d like to ask about a custom cake order.');
+        a.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+      } else {
+        a.setAttribute('aria-disabled', 'true');
+        a.title = 'WhatsApp ordering link coming soon';
+      }
+    });
+  }
+
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

@@ -1,9 +1,10 @@
 # Aroma Bakery & Coffee — Website
 
 A restrained, editorial, forest-green boutique-bakery site — built as static
-HTML/CSS/JS with no build step, across four pages: `index.html` (a
+HTML/CSS/JS with no build step, across seven pages: `index.html` (a
 deliberately simplified homepage), `menu.html` (the full menu),
-`custom-cakes.html`, plus `privacy.html`/`terms.html`.
+`custom-cakes.html`, `about.html`, `locations.html`, plus
+`privacy.html`/`terms.html`.
 
 ## ⚠️ Before this goes live
 
@@ -30,22 +31,37 @@ deliberately simplified homepage), `menu.html` (the full menu),
      isn't a photo swap, it's a `<video>` element that doesn't exist in the
      DOM yet.
 2. **Business facts are real and confirmed** — both locations' addresses,
-   phone `(445) 245-9284` / `tel:+14452459284`, hours, and the contact email
+   phone `(445) 245-9284` / `tel:+14452459284`, hours (every day,
+   9:00 AM – 6:00 PM at both locations), and the contact email
    `aromabakerycoffe@gmail.com` (spelled exactly as provided, do not "fix"
-   it) are live in `index.html`, the footer, and the JSON-LD schema
-   (`Organization` + one `Bakery` entry per location). If any of these
-   change, update all four places: the `#locations` section, the footer,
-   the `<head>` schema, and the `tel:`/`mailto:` links scattered through
-   the CTAs.
+   it) are live in `locations.html`, the footer on every page, and the
+   JSON-LD schema in `index.html` (`Organization` + one `Bakery` entry per
+   location). If any of these change, update all of: `locations.html`, the
+   footer, the `<head>` schema, and the `tel:`/`mailto:` links scattered
+   through the CTAs.
 3. **One brand, two Instagram accounts.** Aroma is a single brand
    ("Aroma Bakery & Coffee") with two Philadelphia locations that each run
    their own Instagram: Old City is `@aroma_bakery_coffee`, Northeast
    Philadelphia is `@aroma_bakery_ne` and goes by the name "Aroma Bakery"
    (no "& Coffee") in its own branding. The site-wide header/mobile-nav/
    footer Instagram link points at the primary `@aroma_bakery_coffee`
-   account; each location card in `#locations` has its own correct
-   Instagram button pointing at its own handle. Don't merge these into one
-   account or swap them.
+   account. Don't merge these into one account or swap them.
+4. **WhatsApp ordering is wired but inert.** `custom-cakes.html`'s primary
+   CTA is "Order on WhatsApp" (`.whatsapp-cta`), built entirely from a
+   single `WHATSAPP_NUMBER` constant near the bottom of `assets/js/main.js`.
+   It's currently the placeholder string
+   `"REPLACE_WITH_AROMA_WHATSAPP_NUMBER"`, which intentionally fails the
+   "looks like a real number" check, so the link stays inert (`aria-disabled`,
+   tooltip) rather than pointing at a guessed number. Once the real
+   ordering number is known, put it in that one constant (digits only,
+   international format, e.g. `"12155551234"`) and every `.whatsapp-cta`
+   link on the site updates automatically.
+5. **Logo still not on disk.** A screenshot of the real Aroma logo was
+   shared in chat, but this environment has no path to read chat-attached
+   image bytes from disk — there was nothing to save. The intro splash
+   (`.intro-logo`, every page) and the header wordmark remain a placeholder/
+   text lockup pending the real logo file (see the `TODO` comments next to
+   both in `index.html`).
 
 Swap remaining photo placeholders by replacing each `.ph-photo` div's classes
 with a real `<img>` (see "Swapping in real photos" below). Nothing else needs
@@ -58,21 +74,36 @@ final photography.
 
 - `index.html` — the **homepage**, deliberately restrained: intro splash →
   hero (one image, one line, one CTA) → signature mousse video feature →
-  menu category teasers (4 cards) → one atmosphere photo → locations → a
-  small curated "Follow Aroma" section → footer. No Custom Cakes section,
-  no detailed menu, no "two locations" headline copy — those live on their
-  own pages/sections instead, per the "let the imagery do the work, don't
-  explain everything" direction.
+  menu category teasers (4 cards) → "Order a Custom Cake" CTA strip → one
+  atmosphere photo → a small "Visit Our Locations →" link → a curated
+  "Follow Aroma" section → footer. No Custom Cakes section, no detailed
+  menu, no locations section — those live on their own pages instead, per
+  the "let the imagery do the work, don't explain everything" direction.
 - `menu.html` — the full tabbed menu (Sweet / Bread / Breakfast / Lunch /
-  Coffee), moved off the homepage wholesale. Supports deep links from the
+  Coffee), moved off the homepage wholesale. The Sweet tab's dessert
+  categories use dark, editorial `.food-editorial` panels rather than a
+  text list; the Coffee tab leads with large `.drink-menu-art` artwork
+  slots for Coffee & Espresso / Tea / Matcha. Supports deep links from the
   homepage's category cards via `menu.html#panel-<tab>` — `main.js` reads
   that hash on load, activates the right tab, and scrolls to it (the
   target panel starts `hidden`, so a plain anchor jump can't reach it on
   its own).
-- `custom-cakes.html` — its own dedicated, very visual page (hero + 5-image
-  editorial gallery + closing CTA), reachable from every page's nav. Not a
-  homepage section or a `#custom-cakes` anchor.
-- `privacy.html` / `terms.html` — unchanged legal pages.
+- `custom-cakes.html` — its own dedicated, very visual page: short intro →
+  a 7-image mixed editorial gallery (`.cc-item-1`…`.cc-item-7`, one hero +
+  supporting + wide + balanced portrait/landscape) → a closing "Order on
+  WhatsApp" CTA. Reachable from every page's nav. Not a homepage section.
+- `about.html` — a dedicated About page: photo + short intro (2–3
+  paragraphs, no invented history), an editorial image/text split, a small
+  3-photo gallery, and a quiet closing statement before the footer.
+- `locations.html` — a dedicated Locations page: wide photographic hero →
+  a single map showing both real addresses (a key-free Google Maps
+  directions-embed between the two locations) → a short "Explore Our
+  Locations" intro → two editorial location cards (photo, name, thin gold
+  divider, description, address, hours, "Get Directions →"). The header/
+  mobile-nav/footer "Locations" link on every page points here — it no
+  longer scrolls to a homepage anchor.
+- `privacy.html` / `terms.html` — legal pages; nav/footer updated to match
+  the rest of the site (About, Custom Cakes, Locations links added).
 
 ### Design system
 
@@ -126,9 +157,8 @@ final photography.
   the very bottom. All external links (Instagram, Maps, CROWNE Creative)
   use `rel="noopener noreferrer"`.
 - **Locations** — one brand, two Philadelphia locations, each with its own
-  address/phone/hours/Instagram/Get-Directions link. The homepage no longer
-  headlines "Two Locations. One Aroma." — just a short "Find your nearest
-  Aroma" before the two cards.
+  address/hours/Get-Directions link, now on a dedicated `locations.html`
+  (see "Site map" above) rather than a homepage anchor section.
 - **Responsive/a11y hardening** (all preserved from before, still true):
   `min-width:0` reset globally on `*` to prevent the classic flex/grid
   "min-width:auto" blowout; `overflow-x:clip` on `html`/`body`; safe-area
@@ -192,15 +222,19 @@ python3 -m http.server 8000
 
 ```
 index.html              Homepage — intro, hero, signature mousse video
-                         feature, menu teasers, locations, Follow Aroma, footer
-menu.html               Full tabbed menu
-custom-cakes.html       Dedicated Custom Cakes page
+                         feature, menu teasers, Custom Cake CTA, atmosphere
+                         photo, small locations link, Follow Aroma, footer
+menu.html               Full tabbed menu (editorial dessert panels + drink art slots)
+custom-cakes.html       Dedicated Custom Cakes page (7-image gallery, WhatsApp CTA)
+about.html              Dedicated About page (intro, image/text split, gallery, closing)
+locations.html          Dedicated Locations page (hero, map, two location cards)
 privacy.html            Generic privacy policy (noindex, unreviewed template)
 terms.html              Generic terms of use (noindex, unreviewed template)
 assets/css/styles.css   Design system + all section styles + animations
 assets/css/legal.css    Minimal styles for privacy.html / terms.html
 assets/js/main.js       Intro splash, header transition, mobile nav, scroll
-                         reveal, menu tabs (+ #panel-<tab> deep-linking)
+                         reveal, menu tabs (+ #panel-<tab> deep-linking),
+                         WhatsApp link builder (WHATSAPP_NUMBER constant)
 robots.txt
 sitemap.xml
 ```
