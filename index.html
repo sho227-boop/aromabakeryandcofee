@@ -116,7 +116,7 @@
         <span class="menu-trigger-lines" aria-hidden="true"><span></span><span></span></span>
         <span class="menu-trigger-label">Menu</span>
       </button>
-      <a href="#bakery" class="header-link only-desktop">Our Bakery</a>
+      <a href="#story" class="header-link only-desktop">About</a>
     </div>
 
     <!-- TODO: once the official logo file is available, replace the two
@@ -128,8 +128,8 @@
     </a>
 
     <div class="header-side header-right">
-      <a href="#custom-cakes" data-tab-target="sweet" class="header-link only-wide">Custom Cakes</a>
-      <a href="#locations" class="header-link only-desktop">Visit Us</a>
+      <a href="custom-cakes.html" class="header-link only-wide">Custom Cakes</a>
+      <a href="#locations" class="header-link only-desktop">Locations</a>
       <a href="https://instagram.com/aroma_bakery_coffee" class="header-link only-desktop" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="tel:+14452459284" class="header-link header-cta">Call / Order</a>
     </div>
@@ -139,18 +139,14 @@
 <!-- ============ MOBILE NAV ============ -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
   <ul class="mobile-nav-list">
-    <li style="--i:0"><a href="#pastry-case">Pastries</a></li>
-    <li style="--i:1"><a href="#bakery">Our Bakery</a></li>
-    <li style="--i:2"><a href="#menu">Menu</a></li>
-    <li style="--i:3"><a href="#custom-cakes" data-tab-target="sweet">Custom Cakes</a></li>
-    <li style="--i:4"><a href="#lunch">Lunch</a></li>
-    <li style="--i:5"><a href="#menu" data-tab-target="coffee">Coffee</a></li>
-    <li style="--i:6"><a href="#locations">Locations</a></li>
-    <li style="--i:7"><a href="tel:+14452459284">Call Us</a></li>
+    <li style="--i:0"><a href="menu.html">Menu</a></li>
+    <li style="--i:1"><a href="#story">About</a></li>
+    <li style="--i:2"><a href="custom-cakes.html">Custom Cakes</a></li>
+    <li style="--i:3"><a href="#locations">Locations</a></li>
+    <li style="--i:4"><a href="tel:+14452459284">Call Us</a></li>
   </ul>
   <div class="mobile-nav-foot">
     <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <span>Two Philadelphia Locations</span>
   </div>
 </nav>
 <div class="mobile-nav-scrim" id="mobileScrim"></div>
@@ -158,363 +154,116 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
+  <!-- Kept deliberately simple, per design direction: one image, one
+       brand name, one short line, one CTA. No locations copy, no second
+       button. -->
   <section class="hero" id="top">
     <div class="hero-media">
-      <!-- Swap for <img class="hero-img" src="assets/img/hero-storefront.jpg"
-           alt="Aroma Bakery & Coffee storefront with green entrance doors in
-           Philadelphia" fetchpriority="high" width="1920" height="1280">
-           once the real storefront photo file is available. Do not
-           lazy-load this image; it is the LCP element. -->
+      <!-- HERO_STOREFRONT — swap for <img class="hero-img"
+           src="assets/img/hero-storefront.jpg" alt="Aroma Bakery & Coffee
+           storefront with green entrance doors in Philadelphia"
+           fetchpriority="high" width="1920" height="1280"> once the real
+           storefront photo file is available. Do not lazy-load this
+           image; it is the LCP element. -->
       <div class="hero-img ph-photo" data-tone="forest" data-reveal-immediate
-           data-caption="Real Old City storefront photo (green entrance, 160 N 3rd St) — swap in as full-bleed hero image"
-           role="img" aria-label="Placeholder — the Aroma Bakery & Coffee Old City storefront photograph will appear here"></div>
+           data-caption="HERO_STOREFRONT — full-bleed storefront photo"
+           role="img" aria-label="Placeholder — the Aroma Bakery & Coffee storefront photograph will appear here"></div>
       <div class="hero-scrim"></div>
     </div>
 
     <div class="hero-content">
-      <p class="eyebrow eyebrow--light hero-eyebrow" data-reveal>Philadelphia, PA</p>
       <h1 class="hero-title" aria-label="Aroma Bakery & Coffee">
         <span class="hero-word" data-reveal style="--d:0">Aroma</span>
-        <span class="hero-word" data-reveal style="--d:1">Bakery</span>
-        <span class="hero-word hero-word--amp" data-reveal style="--d:2">&amp; Coffee</span>
+        <span class="hero-word hero-word--amp" data-reveal style="--d:1">Bakery &amp; Coffee</span>
       </h1>
-      <p class="hero-sub" data-reveal style="--d:3">Modern pastries, comforting classics &amp; coffee in Philadelphia.</p>
-      <div class="hero-actions" data-reveal style="--d:4">
-        <a href="#menu" class="btn btn--light">Explore the Menu</a>
-        <a href="#locations" class="btn btn--outline-light">Visit Aroma</a>
+      <p class="hero-sub" data-reveal style="--d:2">Handmade desserts.<br>Artisan coffee.</p>
+      <div class="hero-actions" data-reveal style="--d:3">
+        <a href="menu.html" class="btn btn--light">Explore Menu</a>
       </div>
     </div>
 
-    <a href="#intro" class="scroll-cue" aria-label="Scroll to discover">
+    <a href="#story" class="scroll-cue" aria-label="Scroll to discover">
       <span>Scroll to discover</span>
       <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true"><path d="M1 1l5 17 5-17" stroke="currentColor" stroke-width="1.2"/></svg>
     </a>
   </section>
 
-  <!-- ============ EDITORIAL INTRO ============ -->
-  <section class="intro" id="intro">
-    <div class="intro-grid">
-      <div class="intro-text">
-        <p class="eyebrow" data-reveal>Welcome to Aroma</p>
-        <h2 class="display-xl" data-reveal>
-          A little bit<br>of art in<br>every bite.
-        </h2>
-        <p class="body-lg" data-reveal>
-          Aroma Bakery &amp; Coffee brings together modern pastry, familiar
-          favorites, fresh bread, savory café bites and coffee — baked fresh
-          across our two Philadelphia locations, Old City and Northeast
-          Philadelphia.
-        </p>
-        <a href="#pastry-case" class="text-link" data-reveal>See the pastry case →</a>
-      </div>
+  <!-- ============ EDITORIAL MOVING STRIP ============ -->
+  <!-- The one deliberate exception to "no sliding motion": a slow,
+       continuous, seamlessly-looping photography strip. Two identical
+       copies of the same 5 images (the second marked aria-hidden +
+       .editorial-dup) sit back to back; translating -50% loops perfectly.
+       Under prefers-reduced-motion the animation stops, the duplicate
+       set is hidden, and the single set wraps into a static composition. -->
+  <section class="editorial-strip" id="story">
+    <p class="eyebrow">Made at Aroma</p>
+    <div class="editorial-viewport">
+      <div class="editorial-track">
+        <div class="ph-photo editorial-item editorial-item--portrait" data-tone="forest" data-caption="EDITORIAL_01 — signature mousse dessert" role="img" aria-label="Placeholder — signature mousse dessert"></div>
+        <div class="ph-photo editorial-item editorial-item--landscape" data-tone="beige" data-caption="EDITORIAL_02 — tartlet" role="img" aria-label="Placeholder — tartlet"></div>
+        <div class="ph-photo editorial-item editorial-item--tall" data-tone="chocolate" data-caption="EDITORIAL_03 — pastry" role="img" aria-label="Placeholder — pastry"></div>
+        <div class="ph-photo editorial-item editorial-item--square" data-tone="sage" data-caption="EDITORIAL_04 — coffee" role="img" aria-label="Placeholder — coffee"></div>
+        <div class="ph-photo editorial-item editorial-item--wide" data-tone="gold" data-caption="EDITORIAL_05 — bread / baked item" role="img" aria-label="Placeholder — fresh baked bread"></div>
 
-      <div class="intro-visual">
-        <div class="ph-photo intro-photo-main" data-tone="sage" data-reveal
-             data-caption="Portrait photo — a single hero pastry, close-up"
-             role="img" aria-label="Placeholder — a portrait photograph of a signature Aroma pastry"></div>
-        <div class="ph-photo intro-photo-overlap" data-tone="beige" data-reveal style="--d:2"
-             data-caption="Second overlapping photo — bakery interior or detail shot"
-             role="img" aria-label="Placeholder — a smaller overlapping photograph of the bakery"></div>
+        <div class="ph-photo editorial-item editorial-item--portrait editorial-dup" data-tone="forest" aria-hidden="true"></div>
+        <div class="ph-photo editorial-item editorial-item--landscape editorial-dup" data-tone="beige" aria-hidden="true"></div>
+        <div class="ph-photo editorial-item editorial-item--tall editorial-dup" data-tone="chocolate" aria-hidden="true"></div>
+        <div class="ph-photo editorial-item editorial-item--square editorial-dup" data-tone="sage" aria-hidden="true"></div>
+        <div class="ph-photo editorial-item editorial-item--wide editorial-dup" data-tone="gold" aria-hidden="true"></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ MARQUEE ============ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Pastries&nbsp;•&nbsp;Coffee&nbsp;•&nbsp;Bread&nbsp;•&nbsp;Tarts&nbsp;•&nbsp;Cakes&nbsp;•&nbsp;Quiche&nbsp;•&nbsp;Lunch&nbsp;•&nbsp;Sweet Moments&nbsp;•&nbsp;</span>
-      <span>Pastries&nbsp;•&nbsp;Coffee&nbsp;•&nbsp;Bread&nbsp;•&nbsp;Tarts&nbsp;•&nbsp;Cakes&nbsp;•&nbsp;Quiche&nbsp;•&nbsp;Lunch&nbsp;•&nbsp;Sweet Moments&nbsp;•&nbsp;</span>
-    </div>
-  </div>
-
-  <!-- ============ PASTRY CASE ============ -->
-  <section class="pastry-case" id="pastry-case">
+  <!-- ============ MENU INTRODUCTION ============ -->
+  <section class="menu-intro-section" id="menu">
     <div class="section-head">
-      <p class="eyebrow" data-reveal>The Pastry Case</p>
-      <h2 class="display-lg" data-reveal>There's always something<br>worth looking through the glass for.</h2>
+      <p class="eyebrow" data-reveal>The Menu</p>
+      <h2 class="display-lg" data-reveal>Something for<br>every craving.</h2>
     </div>
 
-    <div class="case-grid">
-      <figure class="case-item case-item--xl" data-reveal>
-        <div class="ph-photo" data-tone="forest" data-caption="Large hero product shot — e.g. sculpted fruit mousse dessert"
-             role="img" aria-label="Placeholder — a large photograph of a signature mousse dessert"></div>
-        <figcaption><span class="case-name">Fruit Mousse</span><span class="case-cat">Signature</span></figcaption>
-      </figure>
-
-      <figure class="case-item" data-reveal style="--d:1">
-        <div class="ph-photo" data-tone="beige" data-caption="Pistachio tart" role="img" aria-label="Placeholder — pistachio tart photograph"></div>
-        <figcaption><span class="case-name">Pistachio Tart</span><span class="case-cat">Tarts</span></figcaption>
-      </figure>
-
-      <figure class="case-item" data-reveal style="--d:2">
-        <div class="ph-photo" data-tone="chocolate" data-caption="Chocolate eclair" role="img" aria-label="Placeholder — chocolate eclair photograph"></div>
-        <figcaption><span class="case-name">Chocolate Eclair</span><span class="case-cat">Eclairs</span></figcaption>
-      </figure>
-
-      <div class="case-editorial" data-reveal style="--d:1">
-        <p class="body-md">Every tray is set behind the glass by hand — mousse
-          shaped like fruit, tarts finished to order, and a rotating cast of
-          seasonal favorites.</p>
-      </div>
-
-      <figure class="case-item" data-reveal style="--d:3">
-        <div class="ph-photo" data-tone="sage" data-caption="Macarons" role="img" aria-label="Placeholder — macaron photograph"></div>
-        <figcaption><span class="case-name">Macarons</span><span class="case-cat">Assorted</span></figcaption>
-      </figure>
-
-      <figure class="case-item case-item--tall" data-reveal style="--d:2">
-        <div class="ph-photo" data-tone="chocolate" data-caption="Chocolate-covered strawberries, tall crop" role="img" aria-label="Placeholder — chocolate-covered strawberries photograph"></div>
-        <figcaption><span class="case-name">Chocolate Strawberries</span><span class="case-cat">Seasonal</span></figcaption>
-      </figure>
-
-      <figure class="case-item" data-reveal style="--d:4">
-        <div class="ph-photo" data-tone="beige" data-caption="Honey cake slice" role="img" aria-label="Placeholder — honey cake photograph"></div>
-        <figcaption><span class="case-name">Honey Cake</span><span class="case-cat">Layer Cake</span></figcaption>
-      </figure>
+    <div class="menu-cat-grid">
+      <a href="menu.html" class="menu-cat-card" data-reveal>
+        <div class="ph-photo" data-tone="forest" data-caption="MENU_DESSERTS" role="img" aria-label="Placeholder — desserts category photograph"></div>
+        <div class="menu-cat-label">
+          <span class="menu-cat-name">Desserts</span>
+          <span class="menu-cat-arrow">View →</span>
+        </div>
+      </a>
+      <a href="menu.html#panel-bread" class="menu-cat-card" data-reveal style="--d:1">
+        <div class="ph-photo" data-tone="beige" data-caption="MENU_BAKERY" role="img" aria-label="Placeholder — bakery category photograph"></div>
+        <div class="menu-cat-label">
+          <span class="menu-cat-name">Bakery</span>
+          <span class="menu-cat-arrow">View →</span>
+        </div>
+      </a>
+      <a href="menu.html#panel-lunch" class="menu-cat-card" data-reveal style="--d:1">
+        <div class="ph-photo" data-tone="chocolate" data-caption="MENU_SAVORY" role="img" aria-label="Placeholder — savory and lunch category photograph"></div>
+        <div class="menu-cat-label">
+          <span class="menu-cat-name">Savory &amp; Lunch</span>
+          <span class="menu-cat-arrow">View →</span>
+        </div>
+      </a>
+      <a href="menu.html#panel-coffee" class="menu-cat-card" data-reveal style="--d:2">
+        <div class="ph-photo" data-tone="sage" data-caption="MENU_DRINKS" role="img" aria-label="Placeholder — drinks category photograph"></div>
+        <div class="menu-cat-label">
+          <span class="menu-cat-name">Drinks</span>
+          <span class="menu-cat-arrow">View →</span>
+        </div>
+      </a>
     </div>
   </section>
 
-  <!-- ============ FULL BLEED BREAK ============ -->
+  <!-- ============ ATMOSPHERE IMAGE ============ -->
   <figure class="bleed-photo">
-    <div class="ph-photo" data-tone="forest" data-caption="Edge-to-edge photo — bakery case or hands finishing a pastry"
-         role="img" aria-label="Placeholder — full width photograph of the bakery at work"></div>
+    <div class="ph-photo" data-tone="forest" data-caption="ATMOSPHERE — edge-to-edge bakery/atmosphere photo"
+         role="img" aria-label="Placeholder — full width atmosphere photograph of the bakery"></div>
   </figure>
-
-  <!-- ============ MENU ============ -->
-  <section class="menu-section" id="menu">
-    <div class="section-head">
-      <p class="eyebrow" data-reveal>More than something sweet</p>
-      <h2 class="display-lg" data-reveal>The Menu</h2>
-      <p class="body-md menu-intro" data-reveal>From the pastry case to the
-        lunch counter — sweet, savory, bread and coffee, all baked in house.
-        Selection and availability may vary by location — ask about today's
-        offerings at Old City or Northeast Philadelphia.</p>
-    </div>
-
-    <div class="menu-tabs" role="tablist" aria-label="Menu categories" id="menuTabs">
-      <button class="menu-tab is-active" role="tab" aria-selected="true" data-tab="sweet">Sweet</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-tab="bread">Bread</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-tab="breakfast">Breakfast</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-tab="lunch">Lunch</button>
-      <button class="menu-tab" role="tab" aria-selected="false" data-tab="coffee">Coffee</button>
-    </div>
-
-    <div class="menu-panels">
-
-      <div class="menu-panel is-active" id="panel-sweet" role="tabpanel">
-        <div class="menu-cats">
-          <div class="menu-cat">
-            <h3>Signature Mousse Cakes</h3>
-            <ul><li>Fruit-shaped mousse desserts</li><li>Dubai-style chocolate desserts</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Macarons</h3>
-            <ul><li>Assorted macarons</li></ul>
-            <p class="menu-note">Flavors vary — ask about today's selection.</p>
-          </div>
-          <div class="menu-cat">
-            <h3>Tartlets</h3>
-            <ul><li>Fruit tartlets</li><li>Chocolate tartlets</li><li>Pistachio tartlets</li><li>Raspberry &amp; pistachio tartlets</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Russian &amp; European Cakes</h3>
-            <ul><li>Layer cakes</li><li>Cheesecake-style desserts</li><li>Tiramisu</li><li>Honey cake</li><li>Napoleon-style pastries</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Individual Desserts</h3>
-            <ul><li>Mini cakes</li><li>Chocolate-covered strawberries</li><li>Chocolate dessert bars</li><li>Seasonal desserts</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Rolls &amp; Pastries</h3>
-            <ul><li>Eclairs</li><li>Pistachio eclairs</li><li>Chocolate eclairs</li><li>Cake pops</li><li>Wafer rolls</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Cookies</h3>
-            <ul><li>Assorted cookies</li></ul>
-            <p class="menu-note">Selections vary — ask about today's cookie case.</p>
-          </div>
-          <div class="menu-cat menu-cat--wide" id="custom-cakes">
-            <h3>Custom Cakes &amp; Celebrations</h3>
-            <ul><li>Whole cakes</li><li>Birthday cakes</li><li>Celebration cakes</li><li>Custom cakes for any occasion</li><li>Mini celebration cakes</li><li>Seasonal cakes</li></ul>
-            <p class="menu-note">Custom cakes for any occasion, available for order — call Aroma for current flavors, availability and custom-order details.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-panel" id="panel-bread" role="tabpanel" hidden>
-        <div class="menu-cats">
-          <div class="menu-cat">
-            <h3>Breads</h3>
-            <ul><li>Fresh breads</li><li>Baguettes</li><li>Seasonal breads</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Croissants</h3>
-            <ul><li>Croissants</li><li>Chocolate croissants</li><li>Filled croissants</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Savory Baked Goods</h3>
-            <ul><li>Breakfast pastries</li><li>Savory baked goods</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-panel" id="panel-breakfast" role="tabpanel" hidden>
-        <div class="menu-cats">
-          <div class="menu-cat">
-            <h3>Breakfast &amp; Brunch</h3>
-            <ul><li>Croissants</li><li>Breakfast pastries</li><li>Quiche</li><li>Fresh bread</li><li>Coffee pairings</li><li>Seasonal breakfast items</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-panel" id="panel-lunch" role="tabpanel" hidden>
-        <div class="menu-cats">
-          <div class="menu-cat">
-            <h3>Sandwiches</h3>
-            <ul><li>Sandwiches</li><li>Fresh bread sandwiches</li><li>Savory croissants</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Quiches &amp; Savory</h3>
-            <ul><li>Individual quiche</li><li>Savory quiche varieties</li><li>Seasonal quiche selections</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Light Lunch</h3>
-            <ul><li>Light lunch items</li><li>Seasonal savory specials</li></ul>
-            <p class="menu-note">Exact fillings and availability vary — ask about today's selection.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-panel" id="panel-coffee" role="tabpanel" hidden>
-        <div class="menu-cats">
-          <div class="menu-cat">
-            <h3>Coffee &amp; Espresso</h3>
-            <ul><li>Espresso</li><li>Americano</li><li>Cappuccino</li><li>Latte</li><li>Coffee</li><li>Iced coffee</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Matcha</h3>
-            <ul><li>Matcha drinks</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Tea</h3>
-            <ul><li>Hot &amp; iced tea</li></ul>
-          </div>
-          <div class="menu-cat">
-            <h3>Cold Drinks</h3>
-            <ul><li>Cold beverages</li><li>Seasonal drinks</li></ul>
-            <p class="menu-note">Ask about today's selection — prices vary.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ FRUIT-SHAPED DESSERT FEATURE ============ -->
-  <section class="feature feature--forest" id="fruit-feature">
-    <div class="feature-head">
-      <p class="eyebrow eyebrow--light" data-reveal>Sculpted by hand</p>
-      <h2 class="display-xl display-xl--light" data-reveal>Almost too<br>pretty to eat.</h2>
-    </div>
-    <div class="hscroll" role="list" aria-label="Fruit-shaped dessert gallery">
-      <div class="hscroll-track">
-        <div class="hscroll-item ph-photo" data-tone="sage" role="listitem" data-caption="Sculpted mousse dessert, strawberry-shaped" aria-label="Placeholder — strawberry-shaped mousse dessert"></div>
-        <div class="hscroll-item ph-photo" data-tone="gold" role="listitem" data-caption="Sculpted mousse dessert, citrus-shaped" aria-label="Placeholder — citrus-shaped mousse dessert"></div>
-        <div class="hscroll-item ph-photo" data-tone="chocolate" role="listitem" data-caption="Sculpted mousse dessert, cocoa finish" aria-label="Placeholder — cocoa-finished mousse dessert"></div>
-        <div class="hscroll-item ph-photo" data-tone="beige" role="listitem" data-caption="Sculpted mousse dessert, pistachio" aria-label="Placeholder — pistachio mousse dessert"></div>
-        <div class="hscroll-item ph-photo" data-tone="sage" role="listitem" data-caption="Sculpted mousse dessert, raspberry" aria-label="Placeholder — raspberry mousse dessert"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CHOCOLATE FEATURE ============ -->
-  <section class="feature feature--chocolate">
-    <div class="choc-grid">
-      <div class="ph-photo choc-photo" data-tone="chocolate" data-reveal
-           data-caption="Close crop, chocolate-covered strawberries bleeding outside frame"
-           role="img" aria-label="Placeholder — close-up chocolate-covered strawberries photograph"></div>
-      <div class="choc-copy" data-reveal>
-        <p class="eyebrow eyebrow--light">From the chocolate case</p>
-        <h2 class="display-lg display-xl--light">Dipped. Drizzled.<br>Decadent.</h2>
-        <p class="body-md body-md--light">A rotating selection of chocolate-dipped
-          fruit and confections, finished by hand. Selections vary — ask about
-          today's chocolate case.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BREAD / LUNCH ============ -->
-  <section class="lunch-section" id="lunch">
-    <div class="ph-photo lunch-photo" data-tone="beige" data-reveal
-         data-caption="Rustic bread/lunch photo — wood, natural daylight"
-         role="img" aria-label="Placeholder — rustic photograph of fresh bread and savory items"></div>
-    <div class="lunch-copy" data-reveal>
-      <p class="eyebrow">Not just desserts</p>
-      <h2 class="display-lg">Stay for lunch.</h2>
-      <ul class="pill-list">
-        <li>Fresh Bread</li>
-        <li>Quiche</li>
-        <li>Savory Pastries</li>
-        <li>Lunch</li>
-        <li>Coffee</li>
-      </ul>
-      <p class="body-md">Baguettes, savory croissants, quiche and light lunch
-        fare — made the same way as everything else in the case: by hand,
-        daily.</p>
-      <a href="#menu" data-tab-target="lunch" class="btn btn--dark">See the Savory Menu</a>
-    </div>
-  </section>
-
-  <!-- ============ QUICHE FEATURE ============ -->
-  <section class="quiche-section">
-    <div class="quiche-grid">
-      <div class="ph-photo quiche-photo" data-reveal data-tone="sage"
-           data-caption="Quiche, close crop"
-           role="img" aria-label="Placeholder — photograph of a fresh quiche"></div>
-      <div class="quiche-copy" data-reveal>
-        <p class="eyebrow">From the savory case</p>
-        <h2 class="display-lg">Quiche, baked<br>for lunch.</h2>
-        <p class="body-md">Ask about today's available quiche and savory selections.</p>
-        <a href="tel:+14452459284" class="btn btn--outline-dark">Call for Today's Selection</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BAKERY CASE EXPERIENCE ============ -->
-  <section class="bakery-case" id="bakery">
-    <p class="eyebrow" data-reveal>Step inside</p>
-    <h2 class="display-lg" data-reveal>See what's<br>in the case.</h2>
-    <div class="case-pano">
-      <div class="ph-photo case-pano-img" id="panoImg" data-tone="forest"
-           data-caption="Panoramic photograph of the full bakery display case"
-           role="img" aria-label="Placeholder — panoramic photograph of the bakery case"></div>
-    </div>
-    <p class="body-md case-caption" data-reveal>Today's selection changes.
-      Come by and see what's waiting behind the glass — at either of our
-      two Philadelphia locations.</p>
-    <a href="#locations" class="btn btn--dark" data-reveal>Visit Aroma</a>
-  </section>
-
-  <!-- ============ INSTAGRAM ============ -->
-  <section class="social-section">
-    <p class="eyebrow" data-reveal>Fresh from Aroma</p>
-    <h2 class="display-lg" data-reveal>@aroma_bakery_coffee</h2>
-    <div class="social-mosaic">
-      <div class="ph-photo social-item social-item--tall" data-tone="chocolate" data-reveal data-caption="Vertical Instagram photo" role="img" aria-label="Placeholder — Instagram photo"></div>
-      <div class="ph-photo social-item" data-tone="sage" data-reveal style="--d:1" data-caption="Square Instagram photo" role="img" aria-label="Placeholder — Instagram photo"></div>
-      <div class="ph-photo social-item" data-tone="beige" data-reveal style="--d:2" data-caption="Square Instagram photo" role="img" aria-label="Placeholder — Instagram photo"></div>
-      <div class="ph-photo social-item social-item--wide" data-tone="gold" data-reveal style="--d:1" data-caption="Horizontal Instagram photo" role="img" aria-label="Placeholder — Instagram photo"></div>
-    </div>
-    <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener noreferrer" class="text-link" data-reveal>Follow @aroma_bakery_coffee →</a>
-  </section>
 
   <!-- ============ OUR LOCATIONS ============ -->
   <section class="locations-section" id="locations">
     <div class="locations-head">
       <p class="eyebrow" data-reveal>Visit Aroma</p>
-      <h2 class="display-xl" data-reveal>Two Locations.<br>One Aroma.</h2>
-      <p class="body-lg" data-reveal>Find your nearest Aroma and stop in for
-        housemade desserts, artisan coffee, tea, and more.</p>
+      <h2 class="display-lg" data-reveal>Find your nearest Aroma.</h2>
     </div>
 
     <div class="locations-grid">
@@ -580,6 +329,25 @@
     </div>
   </section>
 
+  <!-- ============ FOLLOW AROMA ============ -->
+  <!-- Restrained curated section, not a live embedded feed (no third-party
+       JS, no tracking, no layout instability) — four static images
+       linking out to each location's real Instagram. -->
+  <section class="social-section">
+    <p class="eyebrow" data-reveal>Follow Aroma</p>
+    <h2 class="display-lg" data-reveal>Fresh from the case.</h2>
+    <div class="social-mosaic">
+      <div class="ph-photo social-item social-item--tall" data-tone="chocolate" data-reveal data-caption="INSTAGRAM_01" role="img" aria-label="Placeholder — Instagram photo"></div>
+      <div class="ph-photo social-item" data-tone="sage" data-reveal style="--d:1" data-caption="INSTAGRAM_02" role="img" aria-label="Placeholder — Instagram photo"></div>
+      <div class="ph-photo social-item" data-tone="beige" data-reveal style="--d:2" data-caption="INSTAGRAM_03" role="img" aria-label="Placeholder — Instagram photo"></div>
+      <div class="ph-photo social-item social-item--wide" data-tone="gold" data-reveal style="--d:1" data-caption="INSTAGRAM_04" role="img" aria-label="Placeholder — Instagram photo"></div>
+    </div>
+    <div class="social-follow-links" data-reveal>
+      <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener noreferrer">@aroma_bakery_coffee — Old City →</a>
+      <a href="https://instagram.com/aroma_bakery_ne" target="_blank" rel="noopener noreferrer">@aroma_bakery_ne — Northeast →</a>
+    </div>
+  </section>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -597,7 +365,7 @@
         </p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="#menu">Menu</a>
+        <a href="menu.html">Menu</a>
         <a href="#locations">Locations</a>
         <a href="#locations">Contact</a>
         <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener noreferrer">Instagram</a>

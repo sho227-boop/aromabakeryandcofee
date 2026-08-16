@@ -41,8 +41,13 @@
 
   /* ---------- Sticky / transitioning header ---------- */
   const header = document.getElementById('siteHeader');
+  // Pages without a full-bleed hero (menu.html, custom-cakes.html, etc.)
+  // have nothing dark behind the header to justify the transparent/cream
+  // starting state — force the solid "scrolled" style immediately so the
+  // cream wordmark isn't invisible against the cream page background.
+  const hasHero = !!document.querySelector('.hero');
   const setHeaderState = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 60);
+    header.classList.toggle('is-scrolled', !hasHero || window.scrollY > 60);
   };
   setHeaderState();
   window.addEventListener('scroll', setHeaderState, { passive: true });
@@ -168,6 +173,20 @@
       });
     });
   });
+
+  /* ---------- Deep-link into a menu tab via #panel-<tab> ---------- */
+  /* Used by the homepage's category cards (menu.html#panel-bread etc.) —
+     the target panel starts `hidden`, so a plain URL-hash jump can't land
+     on it. Activate the right tab first, then scroll to the tab section. */
+  if (tabs.length && location.hash.startsWith('#panel-')) {
+    const tabName = location.hash.slice('#panel-'.length);
+    if (document.querySelector(`.menu-tab[data-tab="${tabName}"]`)) {
+      activateTab(tabName);
+      requestAnimationFrame(() => {
+        document.getElementById('menu')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
+    }
+  }
 
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');

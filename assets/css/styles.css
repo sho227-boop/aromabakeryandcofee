@@ -115,8 +115,14 @@ h1,h2,h3,p{ margin:0; }
   letter-spacing:-.01em;
   color:var(--forest);
   text-transform:uppercase;
+  overflow-wrap:break-word;
 }
-.display-xl--light{ color:var(--cream); }
+/* Higher specificity than .display-lg/.display-xl alone (which both set
+   their own default color), so this "light" modifier reliably wins
+   regardless of which size class it's paired with or source order. */
+.display-xl--light,
+.display-xl.display-xl--light,
+.display-lg.display-xl--light{ color:var(--cream); }
 
 .display-lg{
   font-family:var(--font-serif);
@@ -125,6 +131,7 @@ h1,h2,h3,p{ margin:0; }
   line-height:1.05;
   letter-spacing:-.005em;
   color:var(--forest);
+  overflow-wrap:break-word;
 }
 
 .body-lg{
@@ -521,119 +528,94 @@ section{ position:relative; }
   padding:clamp(70px,11vw,130px) var(--gutter) clamp(30px,5vw,54px);
 }
 
-/* ---------- Intro ---------- */
-.intro{ background:var(--ivory); padding-bottom:clamp(60px,10vw,120px); }
-.intro-grid{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:clamp(90px,14vw,150px) var(--gutter) 0;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:56px;
+/* =========================================================
+   EDITORIAL MOVING STRIP
+   The homepage's one deliberate exception to "no sliding motion": a slow,
+   continuously-looping photography strip. Two identical copies of the
+   same 5 images sit back-to-back in .editorial-track; translating exactly
+   -50% (one copy's width) loops seamlessly regardless of viewport size,
+   since both halves are pixel-identical. Pure transform animation — no
+   JS, no carousel library.
+   ========================================================= */
+.editorial-strip{ background:var(--ivory); padding:clamp(60px,9vw,110px) 0 0; }
+.editorial-strip .eyebrow{ max-width:var(--container); margin:0 auto clamp(20px,3vw,32px); padding:0 var(--gutter); }
+.editorial-viewport{ overflow:hidden; }
+.editorial-track{
+  display:flex;
+  align-items:flex-end;
+  gap:clamp(12px,1.8vw,24px);
+  width:max-content;
+  padding:0 var(--gutter);
+  animation:editorialMarquee 46s linear infinite;
 }
-@media (min-width:900px){
-  .intro-grid{ grid-template-columns:1.05fr .95fr; align-items:center; gap:40px; }
+@keyframes editorialMarquee{
+  from{ transform:translate3d(0,0,0); }
+  to{ transform:translate3d(-50%,0,0); }
 }
-.intro-text .display-xl{ text-transform:none; margin-bottom:24px; }
-.intro-text .body-lg{ margin-bottom:8px; }
-.intro-visual{ position:relative; }
-.intro-photo-main{
-  aspect-ratio:3/4;
+.editorial-item{
+  flex-shrink:0;
+  width:auto; /* .ph-photo sets width:100%, which would stretch each item
+                 to the full track width — override so aspect-ratio + the
+                 explicit height below actually control each item's size. */
+  height:clamp(240px,32vw,420px);
   border-radius:2px;
-}
-.intro-photo-overlap{
-  position:absolute;
-  width:46%;
-  aspect-ratio:4/5;
-  right:-6%;
-  bottom:-12%;
-  border:6px solid var(--ivory);
-  box-shadow:0 24px 48px rgba(16,39,32,.2);
-}
-@media (max-width:899px){
-  .intro-photo-overlap{ right:auto; left:-4%; bottom:-8%; width:52%; }
-}
-
-/* ---------- Marquee ---------- */
-.marquee{
-  background:var(--forest);
-  color:var(--cream);
   overflow:hidden;
-  padding:clamp(18px,3vw,30px) 0;
-  white-space:nowrap;
 }
-.marquee-track{
-  display:inline-flex;
-  animation:marqueeScroll 34s linear infinite;
-  will-change:transform;
-}
-.marquee-track span{
-  font-family:var(--font-serif);
-  font-style:italic;
-  font-weight:500;
-  font-size:clamp(20px,3.4vw,40px);
-  padding-right:4px;
-}
-@keyframes marqueeScroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+.editorial-item--portrait{ aspect-ratio:3/4; }
+.editorial-item--landscape{ aspect-ratio:4/3; }
+.editorial-item--tall{ aspect-ratio:2/3; }
+.editorial-item--square{ aspect-ratio:1/1; }
+.editorial-item--wide{ aspect-ratio:16/10; }
 
-/* ---------- Pastry case ---------- */
-.pastry-case{ background:var(--cream); padding-bottom:clamp(60px,10vw,120px); }
-.case-grid{
+@media (max-width:640px){
+  .editorial-track{ animation-duration:64s; }
+  .editorial-item{ height:clamp(200px,58vw,280px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .editorial-track{
+    animation:none;
+    flex-wrap:wrap;
+    width:auto;
+  }
+  .editorial-dup{ display:none; }
+}
+
+/* ---------- Homepage menu-world categories ---------- */
+.menu-intro-section{ background:var(--cream); padding:clamp(70px,10vw,120px) 0 clamp(50px,7vw,80px); }
+.menu-cat-grid{
   max-width:var(--container);
   margin:0 auto;
   padding:0 var(--gutter);
   display:grid;
-  grid-template-columns:repeat(6,1fr);
-  grid-auto-rows:minmax(140px,auto);
-  gap:clamp(12px,1.6vw,22px);
+  grid-template-columns:1fr;
+  gap:clamp(14px,2vw,24px);
 }
-.case-item{ position:relative; overflow:hidden; border-radius:2px; }
-.case-item .ph-photo{ transition:transform .65s var(--ease); }
-.case-item:hover .ph-photo{ transform:scale(1.035); }
-.case-item figcaption{
-  position:absolute; left:16px; right:16px; bottom:16px; z-index:2;
-  display:flex; flex-direction:column; gap:2px;
+@media (min-width:640px){
+  .menu-cat-grid{ grid-template-columns:1fr 1fr; }
+}
+.menu-cat-card{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:2px;
+  display:block;
+}
+.menu-cat-card .ph-photo{ transition:transform .65s var(--ease); }
+.menu-cat-card:hover .ph-photo{ transform:scale(1.03); }
+.menu-cat-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 45%, rgba(10,18,15,.6) 100%);
+  pointer-events:none;
+}
+.menu-cat-label{
+  position:absolute; left:24px; right:24px; bottom:22px; z-index:2;
   color:var(--cream);
-  opacity:0; transform:translateY(8px);
-  transition:opacity .5s var(--ease), transform .5s var(--ease);
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px;
 }
-.case-item:hover figcaption{ opacity:1; transform:translateY(0); }
-.case-item::before{
-  content:""; position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg, transparent 55%, rgba(16,39,32,.68) 100%);
-  opacity:0; transition:opacity .5s var(--ease);
-}
-.case-item:hover::before{ opacity:1; }
-.case-name{ font-family:var(--font-serif); font-size:19px; font-weight:600; }
-.case-cat{ font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.8; }
-
-.case-item--xl{ grid-column:span 4; grid-row:span 2; min-height:340px; }
-.case-item:nth-of-type(2){ grid-column:span 2; }
-.case-item:nth-of-type(3){ grid-column:span 2; }
-.case-editorial{
-  grid-column:span 2;
-  display:flex; align-items:center;
-  padding:20px 6px;
-  border-top:1px solid rgba(16,39,32,.2);
-}
-.case-item:nth-of-type(4){ grid-column:span 2; }
-.case-item--tall{ grid-column:span 2; grid-row:span 2; min-height:300px; }
-.case-item:last-of-type{ grid-column:span 2; }
-
-@media (max-width:899px){
-  .case-grid{ grid-template-columns:repeat(2,1fr); }
-  .case-item--xl{ grid-column:span 2; grid-row:span 1; min-height:280px; }
-  .case-item--tall{ grid-column:span 2; min-height:280px; }
-  .case-editorial{ grid-column:span 2; border-top:none; padding:4px 0 12px; }
-  .case-item{ grid-column:span 1 !important; }
-}
-/* iPad landscape / small laptop: 4-column instead of the dense 6-column desktop grid */
-@media (min-width:900px) and (max-width:1180px){
-  .case-grid{ grid-template-columns:repeat(4,1fr); }
-  .case-item--xl{ grid-column:span 4; grid-row:span 1; min-height:320px; }
-  .case-item--tall{ grid-column:span 2; }
-  .case-editorial{ grid-column:span 4; }
-}
+.menu-cat-name{ font-family:var(--font-serif); font-size:clamp(24px,2.6vw,32px); font-weight:600; }
+.menu-cat-arrow{ font-size:14px; letter-spacing:.1em; text-transform:uppercase; opacity:.85; }
 
 /* ---------- Full bleed break ---------- */
 .bleed-photo{ margin:0; height:min(70vh,640px); }
@@ -641,6 +623,9 @@ section{ position:relative; }
 
 /* ---------- Menu ---------- */
 .menu-section{ background:var(--ivory); }
+/* Standalone menu.html has no hero above it, so reserve room for the
+   fixed header instead of letting content start underneath it. */
+.menu-section--page .section-head{ padding-top:calc(var(--header-h) + clamp(40px,6vw,64px)); }
 .menu-intro{ margin-top:6px; }
 .menu-tabs{
   max-width:var(--container);
@@ -703,70 +688,6 @@ section{ position:relative; }
   .menu-tabs{ position:sticky; top:var(--header-h-scrolled); z-index:20; background:var(--ivory); }
 }
 
-/* ---------- Feature sections (fruit / chocolate) ---------- */
-.feature{ padding:clamp(80px,12vw,140px) 0; overflow:hidden; }
-.feature--forest{ background:var(--forest); }
-.feature-head{ max-width:var(--container); margin:0 auto; padding:0 var(--gutter) clamp(40px,6vw,64px); }
-
-.hscroll{ overflow-x:auto; scrollbar-width:none; padding:0 var(--gutter); }
-.hscroll::-webkit-scrollbar{ display:none; }
-.hscroll-track{ display:flex; gap:clamp(14px,2vw,26px); width:max-content; }
-.hscroll-item{
-  width:clamp(220px,26vw,340px);
-  aspect-ratio:3/4;
-  border-radius:2px;
-  transition:transform .6s var(--ease);
-}
-.hscroll-item:hover{ transform:translateY(-6px); }
-
-.feature--chocolate{ background:var(--cream); padding:0; }
-.choc-grid{ display:grid; grid-template-columns:1fr; }
-@media (min-width:900px){ .choc-grid{ grid-template-columns:1.1fr .9fr; align-items:center; } }
-.choc-photo{
-  aspect-ratio:4/5;
-}
-@media (min-width:900px){
-  .choc-photo{ aspect-ratio:auto; height:100%; min-height:520px; margin-right:-6%; position:relative; z-index:1; box-shadow:0 30px 60px rgba(74,44,33,.28); }
-}
-.choc-copy{
-  background:var(--chocolate); color:var(--cream);
-  padding:clamp(48px,8vw,90px) var(--gutter);
-  position:relative; z-index:0;
-}
-.choc-copy .display-lg{ color:var(--cream); }
-
-/* ---------- Lunch section ---------- */
-.lunch-section{
-  background:var(--beige);
-  display:grid; grid-template-columns:1fr;
-}
-@media (min-width:900px){ .lunch-section{ grid-template-columns:1fr 1fr; } }
-.lunch-photo{ aspect-ratio:4/3; }
-@media (min-width:900px){ .lunch-photo{ aspect-ratio:auto; height:100%; } }
-.lunch-copy{ padding:clamp(48px,8vw,90px) var(--gutter); display:flex; flex-direction:column; justify-content:center; }
-.pill-list{ display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 22px; }
-.pill-list li{
-  font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
-  border:1px solid var(--forest-2); color:var(--forest); padding:8px 16px; border-radius:2px;
-}
-
-/* ---------- Quiche ---------- */
-.quiche-section{ background:var(--ivory); }
-.quiche-grid{ display:grid; grid-template-columns:1fr; }
-@media (min-width:900px){ .quiche-grid{ grid-template-columns:1fr 1fr; } }
-.quiche-photo{ aspect-ratio:4/3; }
-@media (min-width:900px){ .quiche-photo{ aspect-ratio:auto; height:100%; min-height:460px; } }
-.quiche-copy{ padding:clamp(48px,8vw,90px) var(--gutter); display:flex; flex-direction:column; justify-content:center; }
-.quiche-copy .btn{ align-self:flex-start; margin-top:10px; }
-
-/* ---------- Bakery case pano ---------- */
-.bakery-case{ background:var(--cream); text-align:center; padding:clamp(80px,12vw,130px) 0 clamp(90px,10vw,120px); }
-.bakery-case .eyebrow, .bakery-case .display-lg{ padding:0 var(--gutter); }
-.bakery-case .display-lg{ margin-bottom:clamp(36px,5vw,60px); }
-.case-pano{ height:min(60vh,560px); margin-bottom:clamp(30px,5vw,48px); overflow:hidden; }
-.case-pano-img{ height:120%; transform:translateY(0); will-change:transform; }
-.case-caption{ max-width:44ch; margin:0 auto 30px; }
-
 /* ---------- Social ---------- */
 .social-section{ background:var(--ivory); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
 .social-mosaic{
@@ -778,6 +699,17 @@ section{ position:relative; }
 .social-item{ border-radius:2px; overflow:hidden; }
 .social-item--tall{ grid-row:span 2; grid-column:span 1; }
 .social-item--wide{ grid-column:span 2; }
+
+.social-follow-links{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:16px 28px; margin-top:30px;
+}
+.social-follow-links a{
+  font-size:14px; letter-spacing:.04em; font-weight:600;
+  color:var(--forest); border-bottom:1px solid var(--forest-2);
+  padding-bottom:3px; transition:opacity .3s var(--ease);
+}
+.social-follow-links a:hover{ opacity:.65; }
 @media (max-width:768px){
   .social-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; }
   .social-item--wide{ grid-column:span 2; }
@@ -856,6 +788,52 @@ a.location-value{ text-decoration:underline; text-underline-offset:3px; text-dec
 a.location-value:hover{ opacity:.6; }
 
 .location-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:6px; }
+
+/* =========================================================
+   CUSTOM CAKES PAGE
+   ========================================================= */
+.cc-hero{
+  padding-top:var(--header-h);
+  display:grid;
+  grid-template-columns:1fr;
+  background:var(--ivory);
+}
+@media (min-width:900px){
+  .cc-hero{ grid-template-columns:1fr 1fr; align-items:center; }
+}
+.cc-hero-head{
+  padding:clamp(48px,8vw,90px) var(--gutter);
+}
+.cc-hero-head .body-lg{ margin-bottom:26px; }
+.cc-hero-photo{ aspect-ratio:4/5; }
+@media (min-width:900px){ .cc-hero-photo{ aspect-ratio:auto; height:100%; min-height:520px; } }
+
+.cc-gallery{ background:var(--cream); padding:clamp(60px,9vw,110px) var(--gutter); }
+.cc-gallery-grid{
+  max-width:var(--container);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(12px,1.6vw,22px);
+}
+.cc-item{ aspect-ratio:4/5; border-radius:2px; overflow:hidden; transition:transform .6s var(--ease); }
+.cc-item--wide{ grid-column:span 3; aspect-ratio:21/9; }
+@media (max-width:899px){
+  .cc-gallery-grid{ grid-template-columns:repeat(2,1fr); }
+  .cc-item--wide{ grid-column:span 2; aspect-ratio:4/3; }
+}
+@media (max-width:560px){
+  .cc-gallery-grid{ grid-template-columns:1fr; }
+  .cc-item--wide{ grid-column:span 1; }
+}
+
+.cc-cta{
+  background:var(--forest);
+  color:var(--cream);
+  text-align:center;
+  padding:clamp(80px,12vw,130px) var(--gutter);
+}
+.cc-cta .hero-actions{ justify-content:center; margin-top:8px; }
 
 /* ---------- Footer ---------- */
 .site-footer{ background:var(--cream); color:var(--forest); position:relative; overflow:hidden; }
