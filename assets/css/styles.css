@@ -879,6 +879,9 @@ a.location-value:hover{ opacity:.6; }
   user-select:none;
 }
 .footer-copy{ text-align:center; font-size:12px; color:var(--forest-2); padding-top:18px; }
+.footer-credit{ text-align:center; font-size:12px; color:var(--forest-2); padding-top:6px; }
+.footer-credit a{ text-decoration:underline; text-underline-offset:2px; transition:opacity .3s var(--ease); }
+.footer-credit a:hover{ opacity:.65; }
 
 /* ---------- Mobile menu open state (body lock) ---------- */
 body.nav-open{ overflow:hidden; }

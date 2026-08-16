@@ -1,0 +1,40 @@
+/* Minimal styles for the standalone legal pages (privacy.html, terms.html).
+   Reuses design tokens/components from styles.css. */
+
+.legal-page{ background:var(--ivory); padding-top:var(--header-h); }
+.legal-inner{
+  max-width:720px;
+  margin:0 auto;
+  padding:clamp(48px,8vw,90px) var(--gutter) clamp(80px,10vw,120px);
+}
+.legal-inner .eyebrow{ margin-bottom:12px; }
+.legal-inner h1{ margin-bottom:6px; }
+.legal-updated{ font-size:13px; color:var(--forest-2); margin-bottom:28px; }
+.legal-notice{
+  font-size:14px;
+  font-style:italic;
+  color:var(--forest-2);
+  background:var(--pale-sage);
+  border-radius:2px;
+  padding:16px 18px;
+  margin-bottom:36px;
+}
+.legal-inner h2{
+  font-family:var(--font-serif);
+  font-size:24px;
+  font-weight:600;
+  color:var(--forest);
+  margin:36px 0 12px;
+}
+.legal-inner p{
+  font-size:15.5px;
+  line-height:1.75;
+  color:var(--text);
+  margin-bottom:14px;
+}
+.legal-inner a{
+  text-decoration:underline;
+  text-underline-offset:2px;
+  color:var(--forest);
+}
+.legal-inner a:hover{ opacity:.7; }

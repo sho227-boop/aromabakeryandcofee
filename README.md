@@ -24,13 +24,22 @@ scroll-driven motion — built as static HTML/CSS/JS with no build step.
      (`.ph-photo`, `data-caption` describes what belongs there) — none of
      those were supplied yet.
 2. **Business facts are real and confirmed** — both locations' addresses,
-   phone `(445) 245-9284` / `tel:+14452459284`, hours, the Instagram handle
-   `@aroma_bakery_coffee`, and the contact email `aromabakerycoffe@gmail.com`
-   (spelled exactly as provided, do not "fix" it) are live in `index.html`,
-   the footer, and the JSON-LD schema (`Organization` + one `Bakery` entry
-   per location). If any of these change, update all four places: the
-   `#locations` section, the footer, the `<head>` schema, and the
-   `tel:`/`mailto:` links scattered through the CTAs.
+   phone `(445) 245-9284` / `tel:+14452459284`, hours, and the contact email
+   `aromabakerycoffe@gmail.com` (spelled exactly as provided, do not "fix"
+   it) are live in `index.html`, the footer, and the JSON-LD schema
+   (`Organization` + one `Bakery` entry per location). If any of these
+   change, update all four places: the `#locations` section, the footer,
+   the `<head>` schema, and the `tel:`/`mailto:` links scattered through
+   the CTAs.
+3. **One brand, two Instagram accounts.** Aroma is a single brand
+   ("Aroma Bakery & Coffee") with two Philadelphia locations that each run
+   their own Instagram: Old City is `@aroma_bakery_coffee`, Northeast
+   Philadelphia is `@aroma_bakery_ne` and goes by the name "Aroma Bakery"
+   (no "& Coffee") in its own branding. The site-wide header/mobile-nav/
+   footer Instagram link points at the primary `@aroma_bakery_coffee`
+   account; each location card in `#locations` has its own correct
+   Instagram button pointing at its own handle. Don't merge these into one
+   account or swap them.
 
 Swap remaining photo placeholders by replacing each `.ph-photo` div's classes
 with a real `<img>` (see "Swapping in real photos" below). Nothing else needs
@@ -69,12 +78,19 @@ final photography.
   viewport), a slow marquee, and a scroll-linked pan on the bakery-case
   panorama. Everything respects `prefers-reduced-motion: reduce`.
 - **Menu content** covers every category from the brief (Signature Mousse
-  Cakes, Macarons, Tarts & Tartlets, Rolls & Pastries, Cookies, Cakes &
-  Slices, Custom Cakes & Celebrations, Bread, Croissants & Baked Goods,
-  Breakfast/Brunch, Lunch, Quiche, Coffee & Espresso, Matcha & Tea, Cold
+  Cakes, Russian & European Cakes, Individual Desserts, Macarons,
+  Tartlets, Rolls & Pastries, Cookies, Custom Cakes & Celebrations, Breads,
+  Croissants, Quiches & Savory, Coffee & Espresso, Matcha, Tea, Cold
   Drinks). No prices, flavors, or hours were invented — anywhere specifics
   aren't confirmed, copy says "ask about today's selection" / "call for
-  details."
+  details." The menu intro also notes that "selection and availability may
+  vary by location," since not every item is confirmed at both stores.
+- **Footer** links to `privacy.html` and `terms.html` (generic legal
+  boilerplate, `noindex`, clearly marked as unreviewed templates — get
+  these looked at by an attorney before relying on them) and credits
+  "Created by CROWNE Creative" → https://crownecreative.com at the very
+  bottom. All external links (Instagram, Maps, CROWNE Creative) use
+  `rel="noopener noreferrer"`.
 - **Responsive/a11y hardening**: `min-width:0` reset globally on `*` to
   prevent the classic flex/grid "min-width:auto" blowout (a nested flex or
   grid item's intrinsic content size silently forcing its container wider
@@ -116,7 +132,10 @@ python3 -m http.server 8000
 
 ```
 index.html              All markup/sections/SEO metadata
+privacy.html            Generic privacy policy (noindex, unreviewed template)
+terms.html              Generic terms of use (noindex, unreviewed template)
 assets/css/styles.css   Design system + all section styles + animations
+assets/css/legal.css    Minimal styles for privacy.html / terms.html
 assets/js/main.js       Header transition, mobile nav, scroll reveal, menu tabs, parallax
 robots.txt
 sitemap.xml
