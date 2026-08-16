@@ -662,24 +662,91 @@ section{ position:relative; }
   .social-item--wide{ grid-column:span 2; }
 }
 
-/* ---------- Visit ---------- */
-.visit-section{
-  background:var(--forest); color:var(--cream);
-  text-align:center;
-  padding:clamp(90px,14vw,150px) var(--gutter);
+/* ---------- Our Locations ---------- */
+.locations-section{ background:var(--ivory); overflow:hidden; }
+.locations-head{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:clamp(80px,12vw,130px) var(--gutter) clamp(40px,6vw,64px);
 }
-.visit-details{ margin:18px 0 34px; }
-.visit-name{ font-family:var(--font-serif); font-size:24px; font-weight:600; }
-.visit-loc{ color:var(--pale-sage); margin-top:4px; }
-.visit-note{ margin-top:12px; font-size:13px; font-style:italic; color:var(--sage); }
-.visit-actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; }
+.locations-head .body-lg{ max-width:52ch; }
+
+.locations-grid{
+  display:grid;
+  grid-template-columns:1fr;
+}
+@media (min-width:900px){
+  .locations-grid{ grid-template-columns:1fr 1fr; }
+}
+
+.location-card{ display:flex; flex-direction:column; }
+.location-photo{ aspect-ratio:4/3; }
+@media (min-width:900px){
+  .location-photo{ aspect-ratio:auto; height:clamp(280px,32vw,420px); }
+}
+
+.location-body{
+  flex:1;
+  padding:clamp(36px,5vw,56px) var(--gutter);
+  display:flex; flex-direction:column; gap:16px;
+}
+.location-card--light .location-body{ background:var(--cream); color:var(--text); }
+.location-card--dark .location-body{ background:var(--forest); color:var(--cream); }
+
+.location-index{
+  font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:600;
+  opacity:.65;
+}
+.location-card--dark .location-index{ color:var(--sage); opacity:1; }
+.location-card--light .location-index{ color:var(--forest-2); opacity:1; }
+
+.location-name{
+  font-family:var(--font-serif); font-weight:600;
+  font-size:clamp(30px,3.6vw,42px);
+  line-height:1.05;
+}
+.location-card--light .location-name{ color:var(--forest); }
+.location-card--dark .location-name{ color:var(--cream); }
+
+.location-address{
+  font-style:normal;
+  font-size:15px;
+  line-height:1.7;
+  opacity:.9;
+}
+
+.location-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  padding:18px 0;
+  border-top:1px solid;
+  border-bottom:1px solid;
+}
+.location-card--light .location-meta{ border-color:var(--beige); }
+.location-card--dark .location-meta{ border-color:rgba(246,241,231,.22); }
+
+.location-label{
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+  opacity:.6; margin-bottom:4px;
+}
+.location-value{ font-size:15px; line-height:1.55; display:inline-block; }
+a.location-value{ text-decoration:underline; text-underline-offset:3px; text-decoration-color:currentColor; opacity:.9; transition:opacity .3s var(--ease); }
+a.location-value:hover{ opacity:.6; }
+
+.location-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:6px; }
 
 /* ---------- Footer ---------- */
 .site-footer{ background:var(--cream); color:var(--forest); position:relative; overflow:hidden; }
 .footer-inner{ max-width:var(--container); margin:0 auto; padding:clamp(50px,8vw,80px) var(--gutter) 30px; position:relative; z-index:1; }
-.footer-top{ display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:flex-end; padding-bottom:32px; border-bottom:1px solid var(--beige); }
+.footer-top{ display:flex; flex-wrap:wrap; gap:24px 40px; justify-content:space-between; align-items:flex-start; padding-bottom:32px; border-bottom:1px solid var(--beige); }
+.footer-links{ padding-top:2px; }
 .footer-title{ font-family:var(--font-serif); font-size:24px; font-weight:600; }
-.footer-loc{ color:var(--forest-2); margin-top:4px; }
+.footer-loc{ color:var(--forest-2); margin-top:4px; font-size:14px; }
+.footer-tagline{ max-width:42ch; margin-top:14px; font-size:14px; line-height:1.6; color:var(--text); opacity:.85; }
+.footer-contact{ margin-top:14px; font-size:13.5px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; color:var(--forest-2); }
+.footer-contact a{ text-decoration:underline; text-underline-offset:3px; transition:opacity .3s var(--ease); }
+.footer-contact a:hover{ opacity:.6; }
 .footer-links{ display:flex; flex-wrap:wrap; gap:22px; font-size:13px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; }
 .footer-links a:hover{ opacity:.6; }
 .footer-wordmark{

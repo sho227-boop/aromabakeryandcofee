@@ -6,31 +6,28 @@ scroll-driven motion — built as static HTML/CSS/JS with no build step.
 
 ## ⚠️ Before this goes live
 
-The repository was empty when this redesign was built, so it ships with:
-
-1. **Placeholder photography.** Every image slot is a labeled color panel
+1. **Placeholder photography only.** Every image slot is a labeled color panel
    (`.ph-photo` in `assets/css/styles.css`), not a real or AI-generated photo —
    per the design brief, fake/AI food imagery is explicitly out. Each block's
    `data-caption` describes exactly what real Aroma photo belongs there
-   (e.g. "Large hero product shot — sculpted fruit mousse dessert"). Search
-   `index.html` for `data-caption` to find all ~24 slots.
-2. **Placeholder business facts.** Address, phone number and hours are **not**
-   filled in — only "Philadelphia, Pennsylvania" is used, which was in the
-   brief. Search `index.html` for `tel:+10000000000` and the `visit-note` /
-   footer copy and replace with verified info once confirmed.
-3. **Placeholder Instagram handle.** `@aroma_bakery_coffee` is used as a
-   placeholder (per the brief's own example) — confirm the real handle before
-   publishing.
-4. **Logo.** The header currently renders "Aroma / Bakery & Coffee" as styled
+   (e.g. "Old City storefront/interior photo"). Search `index.html` for
+   `data-caption` to find every slot, including the two storefront photos in
+   the Locations section.
+2. **Business facts are now real and confirmed** — both locations' addresses,
+   phone `(445) 245-9284`, hours, the Instagram handle
+   `@aroma_bakery_coffee`, and the contact email `aromabakerycoffe@gmail.com`
+   (spelled exactly as provided, do not "fix" it) are live in `index.html`,
+   the footer, and the LocalBusiness JSON-LD schema (as a `@graph` with one
+   `Bakery` entry per location). If any of these change, update all four
+   places: the `#locations` section, the footer, the `<head>` schema, and the
+   `tel:`/`mailto:` links scattered through the CTAs.
+3. **Logo.** The header currently renders "Aroma / Bakery & Coffee" as styled
    text. Swap in the real logo mark if one exists.
-5. **LocalBusiness schema** in the `<head>` of `index.html` intentionally
-   omits street address/phone/hours until they're verified — fill those in
-   once confirmed, don't guess.
 
-Swap placeholders by replacing each `.ph-photo` div's classes with a real
-`<img>` (see "Swapping in real photos" below), and updating the text noted
-above. Nothing else needs to change — the design system, layout and motion
-already work around your final photography.
+Swap photo placeholders by replacing each `.ph-photo` div's classes with a real
+`<img>` (see "Swapping in real photos" below). Nothing else needs to change —
+the design system, layout and motion already work around your final
+photography.
 
 ## How the design was built
 
@@ -44,7 +41,12 @@ already work around your final photography.
   (mixed-size editorial grid) → full-bleed photo break → tabbed menu (Sweet /
   Bread / Breakfast / Lunch / Coffee) → fruit-shaped dessert horizontal
   gallery → chocolate feature → bread/lunch → quiche feature → bakery case
-  panorama → Instagram mosaic → visit → footer.
+  panorama → Instagram mosaic → **Our Locations** (split-screen, cream/forest
+  alternating cards, one per location, each with its own address/phone/hours
+  and Get Directions/Call CTAs) → footer.
+- The site is written throughout to never imply a single location — copy
+  says "two Philadelphia locations" / "Old City and Northeast Philadelphia"
+  in the intro, bakery-case section, hero CTA, nav, and footer.
 - **Motion** — IntersectionObserver-driven reveals (opacity + translateY),
   a subtle hero cinematic zoom, header shrink-on-scroll, mobile full-screen
   nav with staggered link entrance, a slow marquee, and a scroll-linked pan
