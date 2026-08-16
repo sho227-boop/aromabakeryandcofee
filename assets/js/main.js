@@ -3,6 +3,42 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Intro splash ---------- */
+  /* Shows once per browser session (sessionStorage-gated), not on every
+     internal navigation/back button. Skips the blur/scale choreography
+     entirely under prefers-reduced-motion — just a quick fade. */
+  const intro = document.getElementById('introSplash');
+  if (intro) {
+    const alreadyShown = (() => {
+      try { return sessionStorage.getItem('aromaIntroShown') === 'true'; }
+      catch (_) { return false; }
+    })();
+
+    if (alreadyShown) {
+      intro.classList.add('is-hidden');
+      intro.setAttribute('aria-hidden', 'true');
+      intro.style.display = 'none';
+    } else {
+      document.body.classList.add('nav-open'); // lock scroll during intro
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => intro.classList.add('is-visible'));
+      });
+
+      const holdMs = reduceMotion ? 400 : 2600;
+      const fadeMs = reduceMotion ? 300 : 700;
+
+      const dismiss = () => {
+        intro.classList.add('is-hidden');
+        intro.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('nav-open');
+        try { sessionStorage.setItem('aromaIntroShown', 'true'); } catch (_) {}
+        setTimeout(() => { intro.style.display = 'none'; }, fadeMs);
+      };
+
+      setTimeout(dismiss, holdMs);
+    }
+  }
+
   /* ---------- Sticky / transitioning header ---------- */
   const header = document.getElementById('siteHeader');
   const setHeaderState = () => {
@@ -119,9 +155,17 @@
   });
 
   document.querySelectorAll('[data-tab-target]').forEach(el => {
-    el.addEventListener('click', () => {
-      // let the anchor jump happen, then switch tab
-      setTimeout(() => activateTab(el.dataset.tabTarget), 250);
+    el.addEventListener('click', (e) => {
+      // Target may be nested inside a hidden panel (e.g. #custom-cakes),
+      // so activate the tab first, then scroll to the anchor once it's
+      // actually rendered.
+      const hash = el.getAttribute('href');
+      e.preventDefault();
+      activateTab(el.dataset.tabTarget);
+      requestAnimationFrame(() => {
+        const dest = hash && document.querySelector(hash);
+        if (dest) dest.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
     });
   });
 

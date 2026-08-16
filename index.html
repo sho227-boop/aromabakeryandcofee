@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aroma Bakery &amp; Coffee | Philadelphia Bakery, Pastries, Cakes &amp; Coffee — Two Locations</title>
-<meta name="description" content="Aroma Bakery &amp; Coffee is a modern, cozy cafe with two Philadelphia locations — Old City and Northeast Philadelphia — serving housemade desserts, custom cakes, fresh bread, quiche, lunch and artisan coffee.">
+<title>Aroma Bakery &amp; Coffee | Desserts, Coffee &amp; Custom Cakes in Philadelphia</title>
+<meta name="description" content="Aroma Bakery &amp; Coffee serves housemade desserts, artisan coffee, tea, pastries, custom cakes and more at two Philadelphia locations — Old City and Northeast Philadelphia.">
 <link rel="canonical" href="https://www.aromabakeryandcoffee.com/">
 
 <!-- Open Graph -->
@@ -20,6 +20,15 @@
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Aroma Bakery & Coffee",
+      "description": "Modern, cozy cafe serving housemade desserts, artisan coffee, and teas. Custom cakes for any occasion, available for order.",
+      "url": "https://www.aromabakeryandcoffee.com/",
+      "email": "aromabakerycoffe@gmail.com",
+      "telephone": "+14452459284",
+      "sameAs": ["https://instagram.com/aroma_bakery_coffee"]
+    },
     {
       "@type": "Bakery",
       "name": "Aroma Bakery & Coffee",
@@ -75,12 +84,27 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23173D32'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='%23F6F1E7' font-family='Georgia,serif'%3EA%3C/text%3E%3C/svg%3E">
+<!-- TODO: replace with the official Aroma logo mark once the asset file is available -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2318352D'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='%23F4EFE6' font-family='Georgia,serif'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+
+<!-- ============ INTRO SPLASH ============ -->
+<!-- Fires once per browser session (sessionStorage-gated) and respects
+     prefers-reduced-motion. The circular placeholder below stands in for
+     the official Aroma logo mark — swap the .ph-photo div for an <img>
+     pointing at the real logo file (e.g. assets/img/aroma-logo.png) the
+     moment it's available. Do not redraw the logo in HTML/CSS. -->
+<div class="intro-splash" id="introSplash" aria-hidden="true">
+  <div class="intro-splash-inner">
+    <div class="intro-logo ph-photo" data-tone="gold"
+         role="img" aria-label="Aroma Bakery & Coffee"></div>
+    <p class="intro-subtitle">Bakery • Coffee • Philadelphia</p>
+  </div>
+</div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -95,15 +119,19 @@
       <a href="#bakery" class="header-link only-desktop">Our Bakery</a>
     </div>
 
+    <!-- TODO: once the official logo file is available, replace the two
+         spans below with <img class="header-logo" src="..." alt="Aroma
+         Bakery & Coffee"> instead of recreating the wordmark in type. -->
     <a href="#top" class="header-brand" aria-label="Aroma Bakery & Coffee — home">
       <span class="brand-line brand-line--main">Aroma</span>
       <span class="brand-line brand-line--sub">Bakery &amp; Coffee</span>
     </a>
 
     <div class="header-side header-right">
+      <a href="#custom-cakes" data-tab-target="sweet" class="header-link only-wide">Custom Cakes</a>
       <a href="#locations" class="header-link only-desktop">Visit Us</a>
       <a href="https://instagram.com/aroma_bakery_coffee" class="header-link only-desktop" target="_blank" rel="noopener">Instagram</a>
-      <a href="tel:4452459284" class="header-link header-cta">Call / Order</a>
+      <a href="tel:+14452459284" class="header-link header-cta">Call / Order</a>
     </div>
   </div>
 </header>
@@ -114,10 +142,11 @@
     <li style="--i:0"><a href="#pastry-case">Pastries</a></li>
     <li style="--i:1"><a href="#bakery">Our Bakery</a></li>
     <li style="--i:2"><a href="#menu">Menu</a></li>
-    <li style="--i:3"><a href="#lunch">Lunch</a></li>
-    <li style="--i:4"><a href="#menu" data-tab-target="coffee">Coffee</a></li>
-    <li style="--i:5"><a href="#locations">Locations</a></li>
-    <li style="--i:6"><a href="tel:4452459284">Call Us</a></li>
+    <li style="--i:3"><a href="#custom-cakes" data-tab-target="sweet">Custom Cakes</a></li>
+    <li style="--i:4"><a href="#lunch">Lunch</a></li>
+    <li style="--i:5"><a href="#menu" data-tab-target="coffee">Coffee</a></li>
+    <li style="--i:6"><a href="#locations">Locations</a></li>
+    <li style="--i:7"><a href="tel:+14452459284">Call Us</a></li>
   </ul>
   <div class="mobile-nav-foot">
     <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener">Instagram</a>
@@ -131,9 +160,14 @@
   <!-- ============ HERO ============ -->
   <section class="hero" id="top">
     <div class="hero-media">
-      <div class="hero-img ph-photo" data-tone="chocolate" data-reveal-immediate
-           data-caption="Replace with a full-bleed hero photo — e.g. Aroma's signature pastry case or a hero chocolate-strawberry shot"
-           role="img" aria-label="Placeholder — an oversized photograph of Aroma's signature pastries will appear here"></div>
+      <!-- Swap for <img class="hero-img" src="assets/img/hero-storefront.jpg"
+           alt="Aroma Bakery & Coffee storefront with green entrance doors in
+           Philadelphia" fetchpriority="high" width="1920" height="1280">
+           once the real storefront photo file is available. Do not
+           lazy-load this image; it is the LCP element. -->
+      <div class="hero-img ph-photo" data-tone="forest" data-reveal-immediate
+           data-caption="Real Old City storefront photo (green entrance, 160 N 3rd St) — swap in as full-bleed hero image"
+           role="img" aria-label="Placeholder — the Aroma Bakery & Coffee Old City storefront photograph will appear here"></div>
       <div class="hero-scrim"></div>
     </div>
 
@@ -269,25 +303,39 @@
       <div class="menu-panel is-active" id="panel-sweet" role="tabpanel">
         <div class="menu-cats">
           <div class="menu-cat">
-            <h3>Tarts</h3>
-            <ul><li>Fruit tarts</li><li>Chocolate tarts</li><li>Pistachio tarts</li><li>Raspberry &amp; pistachio tarts</li><li>Dubai-style chocolate desserts</li></ul>
+            <h3>Signature Mousse Cakes</h3>
+            <ul><li>Fruit-shaped mousse desserts</li><li>Dubai-style chocolate desserts</li></ul>
           </div>
           <div class="menu-cat">
-            <h3>Mousse &amp; Individual Pastries</h3>
-            <ul><li>Fruit-shaped mousse desserts</li><li>Eclairs</li><li>Pistachio eclairs</li><li>Chocolate eclairs</li><li>Macarons</li><li>Cake pops</li></ul>
+            <h3>Macarons</h3>
+            <ul><li>Assorted macarons</li></ul>
+            <p class="menu-note">Flavors vary — ask about today's selection.</p>
           </div>
           <div class="menu-cat">
-            <h3>Cakes</h3>
+            <h3>Tarts &amp; Tartlets</h3>
+            <ul><li>Fruit tarts</li><li>Chocolate tarts</li><li>Pistachio tarts</li><li>Raspberry &amp; pistachio tarts</li></ul>
+          </div>
+          <div class="menu-cat">
+            <h3>Rolls &amp; Pastries</h3>
+            <ul><li>Eclairs</li><li>Pistachio eclairs</li><li>Chocolate eclairs</li><li>Cake pops</li><li>Wafer rolls</li></ul>
+          </div>
+          <div class="menu-cat">
+            <h3>Cookies</h3>
+            <ul><li>Assorted cookies</li></ul>
+            <p class="menu-note">Selections vary — ask about today's cookie case.</p>
+          </div>
+          <div class="menu-cat">
+            <h3>Cakes &amp; Slices</h3>
             <ul><li>Mini cakes</li><li>Layer cakes</li><li>Cheesecake-style desserts</li><li>Tiramisu</li><li>Honey cake</li><li>Napoleon-style pastries</li></ul>
           </div>
           <div class="menu-cat">
             <h3>Chocolate &amp; Seasonal</h3>
-            <ul><li>Chocolate-covered strawberries</li><li>Chocolate dessert bars</li><li>Wafer rolls</li><li>Seasonal desserts</li></ul>
+            <ul><li>Chocolate-covered strawberries</li><li>Chocolate dessert bars</li><li>Seasonal desserts</li></ul>
           </div>
-          <div class="menu-cat menu-cat--wide">
-            <h3>Cakes &amp; Celebrations</h3>
-            <ul><li>Whole cakes</li><li>Birthday cakes</li><li>Celebration cakes</li><li>Custom cakes</li><li>Mini celebration cakes</li><li>Seasonal cakes</li></ul>
-            <p class="menu-note">Call Aroma for current flavors, availability and custom-order details.</p>
+          <div class="menu-cat menu-cat--wide" id="custom-cakes">
+            <h3>Custom Cakes &amp; Celebrations</h3>
+            <ul><li>Whole cakes</li><li>Birthday cakes</li><li>Celebration cakes</li><li>Custom cakes for any occasion</li><li>Mini celebration cakes</li><li>Seasonal cakes</li></ul>
+            <p class="menu-note">Custom cakes for any occasion, available for order — call Aroma for current flavors, availability and custom-order details.</p>
           </div>
         </div>
       </div>
@@ -299,7 +347,7 @@
             <ul><li>Fresh breads</li><li>Baguettes</li><li>Seasonal breads</li></ul>
           </div>
           <div class="menu-cat">
-            <h3>Croissants</h3>
+            <h3>Croissants &amp; Baked Goods</h3>
             <ul><li>Croissants</li><li>Chocolate croissants</li><li>Filled croissants</li></ul>
           </div>
           <div class="menu-cat">
@@ -339,12 +387,16 @@
       <div class="menu-panel" id="panel-coffee" role="tabpanel" hidden>
         <div class="menu-cats">
           <div class="menu-cat">
-            <h3>Coffee</h3>
+            <h3>Coffee &amp; Espresso</h3>
             <ul><li>Espresso</li><li>Americano</li><li>Cappuccino</li><li>Latte</li><li>Coffee</li><li>Iced coffee</li></ul>
           </div>
           <div class="menu-cat">
-            <h3>More Drinks</h3>
-            <ul><li>Tea</li><li>Cold beverages</li><li>Seasonal drinks</li></ul>
+            <h3>Matcha &amp; Tea</h3>
+            <ul><li>Matcha</li><li>Tea</li></ul>
+          </div>
+          <div class="menu-cat">
+            <h3>Cold Drinks</h3>
+            <ul><li>Cold beverages</li><li>Seasonal drinks</li></ul>
             <p class="menu-note">Ask about today's selection — prices vary.</p>
           </div>
         </div>
@@ -418,7 +470,7 @@
         <p class="eyebrow">From the savory case</p>
         <h2 class="display-lg">Quiche, baked<br>for lunch.</h2>
         <p class="body-md">Ask about today's available quiche and savory selections.</p>
-        <a href="tel:4452459284" class="btn btn--outline-dark">Call for Today's Selection</a>
+        <a href="tel:+14452459284" class="btn btn--outline-dark">Call for Today's Selection</a>
       </div>
     </div>
   </section>
@@ -477,7 +529,7 @@
           <div class="location-meta">
             <div>
               <p class="location-label">Phone</p>
-              <a href="tel:4452459284" class="location-value">(445) 245-9284</a>
+              <a href="tel:+14452459284" class="location-value">(445) 245-9284</a>
             </div>
             <div>
               <p class="location-label">Hours</p>
@@ -486,7 +538,7 @@
           </div>
           <div class="location-actions">
             <a href="https://www.google.com/maps/search/?api=1&query=Aroma+Bakery+%26+Coffee%2C+160+N+3rd+St%2C+Philadelphia%2C+PA" target="_blank" rel="noopener" class="btn btn--dark">Get Directions</a>
-            <a href="tel:4452459284" class="btn btn--outline-dark">Call</a>
+            <a href="tel:+14452459284" class="btn btn--outline-dark">Call</a>
           </div>
         </div>
       </article>
@@ -506,7 +558,7 @@
           <div class="location-meta">
             <div>
               <p class="location-label">Phone</p>
-              <a href="tel:4452459284" class="location-value">(445) 245-9284</a>
+              <a href="tel:+14452459284" class="location-value">(445) 245-9284</a>
             </div>
             <div>
               <p class="location-label">Hours</p>
@@ -515,7 +567,7 @@
           </div>
           <div class="location-actions">
             <a href="https://www.google.com/maps/search/?api=1&query=Aroma+Bakery+%26+Coffee+by+Adam%2C+1916+Welsh+Rd%2C+Philadelphia%2C+PA+19115" target="_blank" rel="noopener" class="btn btn--light">Get Directions</a>
-            <a href="tel:4452459284" class="btn btn--outline-light">Call</a>
+            <a href="tel:+14452459284" class="btn btn--outline-light">Call</a>
           </div>
         </div>
       </article>
@@ -534,7 +586,7 @@
         <p class="footer-loc">Two Philadelphia Locations — Old City &amp; Northeast Philadelphia</p>
         <p class="footer-tagline">Modern, cozy cafe serving housemade desserts, artisan coffee, and teas. Custom cakes for any occasion, available for order.</p>
         <p class="footer-contact">
-          <a href="tel:4452459284">(445) 245-9284</a>
+          <a href="tel:+14452459284">(445) 245-9284</a>
           <span aria-hidden="true">·</span>
           <a href="mailto:aromabakerycoffe@gmail.com">aromabakerycoffe@gmail.com</a>
         </p>
@@ -543,7 +595,7 @@
         <a href="#menu">Menu</a>
         <a href="#locations">Locations</a>
         <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener">Instagram</a>
-        <a href="tel:4452459284">Call</a>
+        <a href="tel:+14452459284">Call</a>
       </nav>
     </div>
     <div class="footer-wordmark" aria-hidden="true">Aroma</div>
