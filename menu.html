@@ -91,27 +91,233 @@
 
       <div class="menu-panel is-active" id="panel-sweet" role="tabpanel">
 
-        <!-- These three are finished menu posters, not text lists — the
-             actual uploaded Pastries / Desserts / Macarons artwork
-             (dark-brown Aroma-branded canvases with real product photos
-             and names baked in), shown full-bleed so they read as part
-             of the page rather than a separate framed image block. -->
-        <div class="food-menu-gallery">
-          <div class="food-menu-block" data-reveal>
-            <img class="food-menu-art" src="assets/img/menu-pastries.jpg"
-                 alt="Aroma Bakery & Coffee Pastries menu — plain and chocolate croissants, lemon mousse, berry and strawberry cupcakes, assorted macarons, mini fruit pies, pistachio and chocolate éclairs, red velvet cake, strawberry shortcake, cake pops, chocolate strawberries, matcha mango roll, mango mousse"
-                 width="1536" height="874" loading="lazy">
+        <!-- Bakery / pastry product grid — clean isolated product cutouts
+             cropped from Aroma's real uploaded Pastries / Desserts / Macarons
+             menu artwork, organized by category with the name set directly
+             underneath each photo. Layout inspired by a reference bakery
+             product grid (isolated cutouts, evenly organized rows, names
+             beneath) — none of that reference's branding, colors, or text
+             were copied; only the presentation style. -->
+        <div class="product-menu">
+          <div class="product-cat">
+            <h3 class="product-cat-head" data-reveal>Croissants & Pastries</h3>
+            <div class="product-grid">
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/plain-croissant.jpg" alt="Plain Croissant — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Plain Croissant</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/chocolate-croissant.jpg" alt="Chocolate Croissant — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Chocolate Croissant</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/pistachio-eclair.jpg" alt="Pistachio Éclair — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Pistachio Éclair</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/chocolate-eclair.jpg" alt="Chocolate Éclair — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Chocolate Éclair</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/mini-fruit-pies.jpg" alt="Mini Fruit Pies — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Mini Fruit Pies</p>
+              </div>
+            </div>
           </div>
-          <div class="food-menu-block" data-reveal style="--d:1">
-            <img class="food-menu-art" src="assets/img/menu-desserts.jpg"
-                 alt="Aroma Bakery & Coffee Desserts menu — pavlova, pistachio tartelette, passionfruit tartelette, cakesicles, tartelette, cake pops, honey cake, carrot cake, Dubai cheesecake, New York cheesecake"
-                 width="1536" height="829" loading="lazy">
+          <div class="product-cat">
+            <h3 class="product-cat-head" data-reveal>Cakes & Individual Desserts</h3>
+            <div class="product-grid">
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/lemon-mousse.jpg" alt="Lemon Mousse — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Lemon Mousse</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/berry-cupcake.jpg" alt="Berry Cupcake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Berry Cupcake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/strawberry-cupcake.jpg" alt="Strawberry Cupcake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Strawberry Cupcake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/red-velvet-cake.jpg" alt="Red Velvet Cake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Red Velvet Cake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/strawberry-shortcake.jpg" alt="Strawberry Shortcake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Strawberry Shortcake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/matcha-mango-roll.jpg" alt="Matcha Mango Roll — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Matcha Mango Roll</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/mango-mousse.jpg" alt="Mango Mousse — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Mango Mousse</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/pavlova.jpg" alt="Pavlova — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Pavlova</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/pistachio-tartelette.jpg" alt="Pistachio Tartelette — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Pistachio Tartelette</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/passionfruit-tartelette.jpg" alt="Passionfruit Tartelette — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Passionfruit Tartelette</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/tartelette.jpg" alt="Tartelette — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Tartelette</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/honey-cake.jpg" alt="Honey Cake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Honey Cake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/carrot-cake.jpg" alt="Carrot Cake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Carrot Cake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/dubai-cheesecake.jpg" alt="Dubai Cheesecake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Dubai Cheesecake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/ny-cheesecake.jpg" alt="NY Cheesecake — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">NY Cheesecake</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/cakesicle.jpg" alt="Cakesicle — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Cakesicle</p>
+              </div>
+            </div>
           </div>
-          <div class="food-menu-block" data-reveal style="--d:2">
-            <img class="food-menu-art" src="assets/img/menu-macarons.jpg"
-                 alt="Aroma Bakery & Coffee Macarons menu — blueberry, strawberry, snickers, mango, pistachio raspberry, coconut, lemon, chocolate, matcha and assorted macarons"
-                 width="1536" height="1024" loading="lazy">
+          <div class="product-cat">
+            <h3 class="product-cat-head" data-reveal>Cake Pops & Chocolate</h3>
+            <div class="product-grid">
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/cake-pops.jpg" alt="Cake Pops — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Cake Pops</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/chocolate-strawberries.jpg" alt="Chocolate Strawberries — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Chocolate Strawberries</p>
+              </div>
+            </div>
           </div>
+          <div class="product-cat">
+            <h3 class="product-cat-head" data-reveal>Macarons</h3>
+            <div class="product-grid">
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/blueberry-macaron.jpg" alt="Blueberry Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Blueberry Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/strawberry-macaron.jpg" alt="Strawberry Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Strawberry Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/snickers-macaron.jpg" alt="Snickers Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Snickers Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/mango-macaron.jpg" alt="Mango Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Mango Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/pistachio-raspberry-macaron.jpg" alt="Pistachio Raspberry Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Pistachio Raspberry Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:0">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/coconut-macaron.jpg" alt="Coconut Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Coconut Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:1">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/lemon-macaron.jpg" alt="Lemon Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Lemon Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:2">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/chocolate-macaron.jpg" alt="Chocolate Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Chocolate Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:3">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/matcha-macaron.jpg" alt="Matcha Macaron — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Matcha Macaron</p>
+              </div>
+              <div class="product-item" data-reveal style="--d:4">
+                <div class="product-item-frame">
+                  <img class="product-item-photo" src="assets/img/products/assorted-macarons-plate.jpg" alt="Assorted Macarons — Aroma Bakery & Coffee" loading="lazy">
+                </div>
+                <p class="product-item-name">Assorted Macarons</p>
+              </div>
+            </div>
+          </div>
+          <p class="product-menu-note">Available selections may vary by location.</p>
         </div>
 
         <div class="menu-cats">
