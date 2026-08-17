@@ -837,16 +837,18 @@ img.drink-menu-art{
 }
 .menu-cats--spaced{ margin-top:clamp(40px,6vw,64px); }
 
-/* Sweet tab — finished dessert/pastry/macaron menu posters, same
-   real-artwork treatment as the Drinks tab but wider (landscape
-   multi-item layouts need more room to stay legible). */
+/* Sweet tab — finished dessert/pastry/macaron menu posters. Full-bleed
+   within the menu container (no card border/shadow, no gap between
+   posters, no separate "Menu" label) so they read as part of the dark
+   page itself rather than a framed image sitting on top of it — their
+   own near-black backgrounds continue the section's dark ground. */
 .food-menu-gallery{
   display:flex;
   flex-direction:column;
-  gap:clamp(40px,6vw,72px);
-  max-width:1120px;
-  margin:0 auto clamp(48px,7vw,72px);
+  margin:0 calc(-1 * var(--gutter)) clamp(40px,6vw,64px);
 }
+.food-menu-block{ line-height:0; }
+.food-menu-art{ width:100%; height:auto; display:block; }
 
 /* ---------- Social — 3 highlighted posts per account, side by side ---------- */
 .social-section{ background:var(--forest-black); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
