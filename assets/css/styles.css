@@ -14,9 +14,6 @@
   --ivory:       #FAF7F1;  /* soft ivory — used sparingly, contrast sections only */
   --beige:       #CDBEAA;  /* soft taupe (borders etc.) */
   --chocolate:   #4A2C21;  /* dark chocolate / espresso brown */
-  --espresso-black: #120B07; /* very dark espresso — near-black, matches the real
-                                 product photography's own studio backdrop so
-                                 isolated cutouts sit on it with no visible edge */
   --gold:        #B7A06A;  /* muted gold/copper — the site's primary metallic accent */
   --gold-soft:   rgba(183,160,106,.55);
   --text:        #17231F;  /* text dark — light-section body copy */
@@ -685,41 +682,43 @@ section{ position:relative; }
 .bleed-photo .ph-photo{ min-height:100%; }
 .bleed-photo-img{ width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block; }
 
-/* ---------- Menu ---------- */
-.menu-section{ background:var(--forest); }
+/* ---------- Menu — warm, light European-bakery palette ---------- */
+/* Deliberately NOT the dark forest/near-black treatment used elsewhere on
+   the site — this page reads as a bright, homey bakery case: warm ivory
+   ground, forest green for nav/headings/accents, soft sage for section
+   framing, warm brown for body copy, gold used only as a small accent. */
+.menu-section{ background:var(--ivory); }
 /* Standalone menu.html has no hero above it, so reserve room for the
    fixed header instead of letting content start underneath it. */
 .menu-section--page .section-head{ padding-top:calc(var(--header-h) + clamp(40px,6vw,64px)); }
-.menu-intro{ margin-top:6px; }
+.menu-intro{ margin-top:6px; max-width:58ch; }
+
+/* Category selector — a clean horizontal pill row. Not sticky: it scrolls
+   away with the page instead of permanently covering the content below. */
 .menu-tabs{
   max-width:var(--container);
-  margin:0 auto;
+  margin:clamp(28px,4vw,44px) auto 0;
   padding:0 var(--gutter);
-  display:flex; gap:clamp(18px,3vw,40px);
-  border-bottom:1px solid rgba(183,160,106,.28);
+  display:flex; gap:clamp(8px,1.4vw,14px);
   overflow-x:auto;
   scrollbar-width:none;
 }
 .menu-tabs::-webkit-scrollbar{ display:none; }
 .menu-tab{
-  position:relative;
-  padding:16px 2px 18px;
-  font-family:var(--font-serif);
-  font-size:clamp(17px,2vw,22px);
+  flex:0 0 auto;
+  padding:10px 20px;
+  border-radius:999px;
+  border:1px solid rgba(24,53,45,.2);
+  font-family:var(--font-sans);
+  font-size:14px;
   font-weight:600;
-  color:var(--sage);
+  letter-spacing:.01em;
+  color:var(--forest-2);
   white-space:nowrap;
-  transition:color .35s var(--ease);
+  transition:color .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
 }
-.menu-tab::after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
-  background:var(--gold);
-  transform:scaleX(0); transform-origin:left;
-  transition:transform .4s var(--ease);
-}
-.menu-tab.is-active{ color:var(--gold); }
-.menu-tab.is-active::after{ transform:scaleX(1); }
-.menu-tab:hover{ color:var(--cream); }
+.menu-tab:hover{ border-color:var(--forest); }
+.menu-tab.is-active{ background:var(--forest); border-color:var(--forest); color:var(--ivory); }
 
 .menu-panels{ max-width:var(--container); margin:0 auto; padding:clamp(34px,5vw,56px) var(--gutter) clamp(80px,10vw,130px); }
 .menu-panel{ display:none; }
@@ -728,214 +727,141 @@ section{ position:relative; }
   animation:panelIn .5s var(--ease);
 }
 @keyframes panelIn{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
-.menu-cats{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(28px,4vw,50px); }
+
+.menu-section-title{
+  font-family:var(--font-serif); font-weight:600; color:var(--forest);
+  font-size:clamp(22px,2.4vw,28px); margin-bottom:clamp(18px,2.6vw,26px);
+}
+
+/* Compact text-list groups — used for Savory subgroups and any bakery
+   items without a unique photo. Soft sage card, no black, no heavy
+   borders between lines. */
+.menu-cats{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.6vw,32px); }
 @media (max-width:899px){ .menu-cats{ grid-template-columns:1fr; } }
-/* iPad / tablet: 2-column, not the cramped 3-col desktop grid or a single stretched column */
 @media (min-width:640px) and (max-width:1024px){
   .menu-cats{ grid-template-columns:repeat(2,1fr); }
 }
 .menu-cat--wide{ grid-column:1/-1; }
-.menu-cat h3{
-  font-family:var(--font-serif); font-size:22px; font-weight:600;
-  color:var(--cream); margin-bottom:14px;
-  padding-bottom:10px; border-bottom:1px solid rgba(183,160,106,.3);
+.menu-cat{
+  background:var(--pale-sage);
+  border-radius:6px;
+  padding:clamp(22px,2.8vw,28px) clamp(20px,2.4vw,26px);
 }
+.menu-cat h3{
+  font-family:var(--font-serif); font-size:19px; font-weight:600;
+  color:var(--forest); margin-bottom:4px;
+}
+.menu-cat-sub{ font-size:13px; color:var(--chocolate); opacity:.8; margin-bottom:10px; }
 .menu-cat li{
-  padding:7px 0; font-size:15px; color:var(--pale-sage);
+  padding:5px 0; font-size:15px; color:var(--text);
   display:flex; align-items:baseline; gap:8px;
 }
-.menu-cat li::before{ content:"—"; color:var(--gold); font-size:12px; }
-.menu-note{ margin-top:14px; font-size:13px; font-style:italic; color:var(--sage); }
+.menu-cat li::before{ content:"—"; color:var(--gold); font-size:12px; flex-shrink:0; }
+.menu-note{ margin-top:14px; font-size:13px; font-style:italic; color:var(--chocolate); opacity:.75; }
 
-/* Sticky mobile tab bar */
-@media (max-width:640px){
-  .menu-tabs{ position:sticky; top:var(--header-h-scrolled); z-index:20; background:var(--forest); }
-}
-
-/* ---------- Sweet/food tab — dark editorial gallery ---------- */
-/* Replaces plain text lists for the dessert menu: a deep chocolate-brown
-   editorial canvas, desserts at varied heights/sizes, thin ivory type
-   naming each one nearby — styled after a luxury pastry editorial rather
-   than a conventional menu graphic. Category names from the real Aroma
-   menu are kept; only the *presentation* changes here. */
-.food-editorial{
-  background:var(--chocolate);
-  border-radius:2px;
-  padding:clamp(28px,4vw,56px) clamp(20px,3.5vw,48px);
-  margin-bottom:clamp(28px,4vw,48px);
-}
-.food-editorial:last-child{ margin-bottom:0; }
-.food-editorial-head{ margin-bottom:clamp(28px,4vw,44px); }
-.food-editorial-head .eyebrow{ color:var(--gold); margin-bottom:8px; }
-.food-editorial-head h3{
-  font-family:var(--font-serif); font-weight:600; color:var(--cream);
-  font-size:clamp(24px,2.8vw,34px);
-}
-.food-editorial-grid{
+/* ---------- Sweets — one curated editorial grid, not a wall of images ---------- */
+.sweets-grid{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:clamp(14px,1.8vw,22px);
-  align-items:end;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(26px,3.2vw,40px) clamp(18px,2.4vw,30px);
+  margin-bottom:clamp(48px,6vw,72px);
 }
-.food-editorial-item{
-  position:relative;
-  margin:0;
-  grid-column:span 3;
-  aspect-ratio:3/4;
-  border-radius:2px;
+@media (max-width:767px){
+  .sweets-grid{ grid-template-columns:repeat(2,1fr); gap:24px 16px; }
+}
+.sweets-item{ text-align:center; }
+.sweets-item-frame{
+  aspect-ratio:1/1;
+  border-radius:8px;
   overflow:hidden;
+  border:1px solid rgba(24,53,45,.12);
+  box-shadow:0 6px 16px rgba(24,53,45,.1);
 }
-.food-editorial .menu-note{ color:var(--pale-sage); margin-top:16px; }
-.food-editorial-item--lg{ grid-column:span 4; aspect-ratio:4/5; }
-.food-editorial-item--sm{ grid-column:span 2; aspect-ratio:1/1; }
-.food-editorial-item .ph-photo{ transition:transform .65s var(--ease); }
-.food-editorial-item:hover .ph-photo{ transform:scale(1.03); }
-.food-editorial-item::before{
-  content:""; position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg, transparent 55%, rgba(20,10,6,.72) 100%);
-  pointer-events:none;
+.sweets-item-photo{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .5s var(--ease);
 }
-.food-editorial-name{
-  position:absolute; left:16px; right:16px; bottom:14px; z-index:2;
-  font-family:var(--font-serif); font-weight:500; font-style:italic;
-  color:var(--cream); font-size:clamp(15px,1.6vw,19px);
-  letter-spacing:.01em;
-}
-@media (max-width:640px){
-  .food-editorial-grid{ grid-template-columns:repeat(2,1fr); }
-  .food-editorial-item{ grid-column:span 1 !important; aspect-ratio:3/4 !important; }
-}
-
-/* ---------- Drinks tab — real menu artwork gallery ---------- */
-/* Coffee & Espresso / Tea / Matcha are finished graphics, not text lists —
-   displayed large, full aspect ratio, generous breathing room. Swap each
-   .drink-menu-art placeholder for a real <img> (see the HTML comment
-   above the Drinks panel in menu.html). */
-.drink-menu-gallery{
-  display:flex;
-  flex-direction:column;
-  gap:clamp(40px,6vw,72px);
-  max-width:760px;
-  margin:0 auto;
-}
-.drink-menu-block{ text-align:center; }
-.drink-menu-block .eyebrow{ margin-bottom:10px; }
-/* Placeholder (div.ph-photo) sizing */
-.drink-menu-art{
-  width:100%;
-  height:auto;
-  aspect-ratio:3/4;
-  border-radius:2px;
-  overflow:hidden;
-  margin:0 auto;
-}
-/* Real artwork: apply this same class directly to the <img> (see comment
-   above the Drinks panel) — object-fit:contain preserves the full graphic
-   at its natural aspect ratio rather than cropping it. */
-img.drink-menu-art{
-  height:auto;
-  aspect-ratio:auto;
-  object-fit:contain;
-  box-shadow:0 0 0 1px rgba(183,160,106,.25);
-}
-.menu-cats--spaced{ margin-top:clamp(40px,6vw,64px); }
-
-/* Sweet tab — bakery/pastry product grid. Isolated product cutouts,
-   floating directly on the dark ground (no card background, no border,
-   no heavy shadow), evenly organized rows with the name set directly
-   underneath each photo — a scannable catalogue rather than a single
-   framed poster. Categories are grouped with a small muted-gold heading,
-   no banner artwork between them.
-   Sits on --espresso-black rather than the standard forest green: the
-   product crops carry their own real near-black studio backdrop (sampled
-   from the source photography), and espresso is close enough to it that,
-   combined with the mask-image fade below, no rectangle is visible around
-   any photo — forest green's more saturated tone would show a hard edge. */
-.product-menu{
-  background:var(--espresso-black);
-  margin:0 calc(-1 * var(--gutter)) clamp(48px,7vw,80px);
-  padding:clamp(44px,7vw,76px) var(--gutter);
-}
-.product-cat{ margin-bottom:clamp(44px,6.5vw,72px); }
-.product-cat:last-child{ margin-bottom:0; }
-.product-cat-head{
-  text-align:center;
+.sweets-item:hover .sweets-item-photo{ transform:scale(1.035); }
+.sweets-item-name{
+  margin-top:12px;
   font-family:var(--font-sans);
-  font-size:12px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
+  font-size:clamp(13.5px,1.2vw,15px);
   font-weight:600;
-  color:var(--gold);
-  margin:0 0 clamp(22px,3vw,34px);
-}
-.product-cat-head::after{
-  content:"";
-  display:block;
-  width:34px;
-  height:1px;
-  margin:10px auto 0;
-  background:var(--gold-soft);
-}
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:clamp(22px,2.6vw,36px) clamp(14px,1.8vw,26px);
-}
-@media (max-width:1023px){ .product-grid{ grid-template-columns:repeat(4,1fr); } }
-@media (max-width:767px){ .product-grid{ grid-template-columns:repeat(3,1fr); gap:24px 14px; } }
-@media (max-width:430px){ .product-grid{ grid-template-columns:repeat(2,1fr); gap:22px 12px; } }
-
-.product-item{ display:flex; flex-direction:column; align-items:center; text-align:center; }
-.product-item-frame{
-  width:100%;
-  aspect-ratio:4/5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.product-item-photo{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  filter:drop-shadow(0 10px 16px rgba(0,0,0,.4));
-  /* Soft-edge mask: fades the source photo's own rectangle to transparent
-     so it reads as a floating cutout rather than a framed thumbnail,
-     without touching a single pixel of the food itself. */
-  -webkit-mask-image:radial-gradient(ellipse 62% 62% at center, #000 58%, transparent 96%);
-          mask-image:radial-gradient(ellipse 62% 62% at center, #000 58%, transparent 96%);
-  transition:transform .5s var(--ease), filter .5s var(--ease);
-}
-.product-item:hover .product-item-photo{
-  transform:scale(1.045);
-  filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
-}
-.product-item-name{
-  margin-top:clamp(10px,1.4vw,15px);
-  font-family:var(--font-sans);
-  font-size:clamp(12px,1.05vw,13.5px);
-  font-weight:600;
-  letter-spacing:.015em;
-  color:var(--ivory);
-  line-height:1.35;
+  color:var(--chocolate);
   transition:color .3s var(--ease);
 }
-.product-item:hover .product-item-name{ color:var(--gold); }
-.product-menu-note{
-  margin-top:clamp(32px,5vw,48px);
-  text-align:center;
-  font-size:13px;
-  font-style:italic;
-  color:var(--sage);
-}
+.sweets-item:hover .sweets-item-name{ color:var(--forest); }
 
-/* Macarons keeps the single finished-poster treatment inside the same
-   product-menu band — its real photography is shot on varied plates/
-   hands rather than the same dark studio ground the other categories'
-   crops share, so isolating individual macarons the same way would show
-   hands/floral plates and look inconsistent rather than clean. */
-.product-cat-poster{ line-height:0; }
-.product-cat-poster img{ width:100%; height:auto; display:block; border-radius:2px; }
+/* Custom Cakes teaser — short and simple, no repeated bullet list */
+.sweets-cta{
+  background:var(--pale-sage);
+  border-radius:8px;
+  padding:clamp(30px,4.4vw,44px) clamp(24px,4vw,40px);
+  text-align:center;
+}
+.sweets-cta h3{
+  font-family:var(--font-serif); font-weight:600; color:var(--forest);
+  font-size:clamp(22px,2.6vw,28px); margin-bottom:10px;
+}
+.sweets-cta p{ color:var(--chocolate); max-width:52ch; margin:0 auto 22px; }
+
+/* ---------- From the Bakery — small editorial pairing, not a duplicate grid ---------- */
+.bakery-feature{
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:clamp(26px,4vw,48px);
+  align-items:stretch;
+}
+@media (max-width:860px){ .bakery-feature{ grid-template-columns:1fr; } }
+.bakery-hero{ border-radius:8px; overflow:hidden; }
+.bakery-hero-photo{
+  width:100%; height:100%; min-height:260px;
+  object-fit:cover; display:block;
+}
+.bakery-side{ display:flex; flex-direction:column; gap:clamp(20px,2.8vw,28px); }
+.bakery-croissants{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.bakery-croissant-photo{
+  width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+  border-radius:8px; border:1px solid rgba(24,53,45,.12);
+}
+.bakery-croissant-item{ text-align:center; }
+.bakery-croissant-name{ margin-top:8px; font-size:13.5px; font-weight:600; color:var(--chocolate); }
+.bakery-list{ background:var(--pale-sage); border-radius:8px; padding:clamp(20px,2.6vw,26px); flex:1; }
+.bakery-list h3{ font-family:var(--font-serif); font-size:19px; font-weight:600; color:var(--forest); margin-bottom:10px; }
+.bakery-list li{ padding:5px 0; font-size:15px; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.bakery-list li::before{ content:"—"; color:var(--gold); font-size:12px; flex-shrink:0; }
+
+/* ---------- Drinks — real responsive HTML text, no poster images ---------- */
+.drinks-menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,5vw,72px);
+  max-width:1080px;
+  margin:0 auto;
+}
+@media (max-width:768px){ .drinks-menu{ grid-template-columns:1fr; } }
+.drinks-col{ display:flex; flex-direction:column; gap:clamp(40px,5vw,56px); }
+.drink-group-title{
+  font-family:var(--font-serif); font-weight:600; color:var(--forest);
+  font-size:clamp(19px,2.1vw,23px); margin-bottom:2px;
+  padding-bottom:10px; border-bottom:1px solid rgba(24,53,45,.22);
+}
+.drink-list{ margin-top:2px; }
+.drink-row{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 16px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(24,53,45,.09);
+}
+.drink-row:last-child{ border-bottom:none; }
+.drink-row--desc{ flex-direction:column; align-items:stretch; }
+.drink-row-top{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 16px; }
+.drink-name{ font-size:15.5px; font-weight:600; color:var(--text); }
+.drink-variant{ font-weight:400; font-size:12.5px; color:var(--chocolate); opacity:.75; }
+.drink-desc{ font-size:13px; color:var(--chocolate); opacity:.8; margin-top:3px; max-width:36ch; }
+.drink-prices{ display:flex; gap:14px; margin-left:auto; font-size:14.5px; color:var(--forest-2); font-weight:600; white-space:nowrap; }
+.drink-addons{ margin-top:14px; padding-top:12px; border-top:1px dashed rgba(24,53,45,.22); }
+.drink-addon-row{ display:flex; justify-content:space-between; gap:16px; font-size:13.5px; color:var(--chocolate); padding:3px 0; }
+.drink-addon-row span:last-child{ font-weight:600; color:var(--forest-2); flex-shrink:0; }
 
 /* ---------- Social — 3 highlighted posts per account, side by side ---------- */
 .social-section{ background:var(--forest-black); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
@@ -1224,25 +1150,20 @@ a.location-value:hover{ opacity:.6; }
    ========================================================= */
 .mousse-feature .eyebrow,
 .menu-intro-section .eyebrow,
-.menu-section .eyebrow,
 .social-section .eyebrow,
 .loc-intro .eyebrow,
 .cc-hero .eyebrow{ color:var(--gold); }
 
 .mousse-feature .display-lg,
 .menu-intro-section .display-lg,
-.menu-section .display-lg,
 .social-section .display-lg,
 .loc-intro .display-lg,
 .cc-hero .display-lg{ color:var(--cream); }
 
 .mousse-feature .body-lg, .mousse-feature .body-md,
 .menu-intro-section .body-lg, .menu-intro-section .body-md,
-.menu-section .body-lg, .menu-section .body-md,
 .social-section .body-lg,
 .cc-hero .body-lg{ color:var(--pale-sage); }
-
-.drink-menu-block .eyebrow{ color:var(--gold); }
 
 /* ---------- Footer — the deepest, darkest section on every page ---------- */
 .site-footer{ background:var(--forest-black); color:var(--cream); position:relative; overflow:hidden; }
