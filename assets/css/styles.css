@@ -826,22 +826,27 @@ img.drink-menu-art{
 }
 .menu-cats--spaced{ margin-top:clamp(40px,6vw,64px); }
 
-/* ---------- Social ---------- */
+/* ---------- Social — 3 highlighted posts per account, side by side ---------- */
 .social-section{ background:var(--forest-black); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
-.social-mosaic{
-  max-width:var(--container); margin:clamp(36px,5vw,56px) auto;
-  display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px;
-  gap:clamp(10px,1.4vw,18px);
+.social-columns{
+  max-width:var(--container); margin:clamp(40px,6vw,64px) auto 0;
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,56px);
   text-align:left;
 }
-.social-item{ border-radius:2px; overflow:hidden; }
+.social-col-label{
+  font-size:13px; letter-spacing:.08em; font-weight:600;
+  color:var(--gold); margin-bottom:16px; text-align:center;
+}
+.social-col-grid{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:clamp(8px,1.2vw,14px);
+}
+.social-item{ border-radius:2px; overflow:hidden; aspect-ratio:1/1; display:block; }
 .social-item-photo{ width:100%; height:100%; object-fit:cover; display:block; }
-.social-item--tall{ grid-row:span 2; grid-column:span 1; }
-.social-item--wide{ grid-column:span 2; }
 
 .social-follow-links{
   display:flex; flex-wrap:wrap; justify-content:center;
-  gap:16px 28px; margin-top:30px;
+  gap:16px 28px; margin-top:36px;
 }
 .social-follow-links a{
   font-size:14px; letter-spacing:.04em; font-weight:600;
@@ -849,9 +854,8 @@ img.drink-menu-art{
   padding-bottom:3px; transition:color .3s var(--ease), opacity .3s var(--ease);
 }
 .social-follow-links a:hover{ color:var(--gold); opacity:1; }
-@media (max-width:768px){
-  .social-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; }
-  .social-item--wide{ grid-column:span 2; }
+@media (max-width:640px){
+  .social-columns{ grid-template-columns:1fr; gap:clamp(28px,7vw,40px); }
 }
 
 /* ---------- Our Locations ---------- */

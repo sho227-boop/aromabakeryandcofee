@@ -267,16 +267,30 @@
 
   <!-- ============ FOLLOW AROMA ============ -->
   <!-- Restrained curated section, not a live embedded feed (no third-party
-       JS, no tracking, no layout instability) — four static images
-       linking out to each location's real Instagram. -->
+       JS, no tracking, no layout instability) — 3 highlighted posts per
+       account, each tile linking straight to the real Instagram post.
+       Old City's 3 tiles link to real posts; Northeast's stay as
+       placeholders until specific posts are supplied for that account. -->
   <section class="social-section">
     <p class="eyebrow" data-reveal>Follow Aroma</p>
     <h2 class="display-lg" data-reveal>Fresh from the case.</h2>
-    <div class="social-mosaic">
-      <div class="ph-photo social-item social-item--tall" data-tone="chocolate" data-reveal data-caption="INSTAGRAM_01" role="img" aria-label="Placeholder — Instagram photo"></div>
-      <img class="social-item social-item-photo" src="assets/img/social-pink-bear-cake.jpg" alt="Pink custom cake with sugar pearl garland and a teddy bear topper, from @aroma_bakery_ne" data-reveal style="--d:1" loading="lazy" width="689" height="891">
-      <div class="ph-photo social-item" data-tone="beige" data-reveal style="--d:2" data-caption="INSTAGRAM_03" role="img" aria-label="Placeholder — Instagram photo"></div>
-      <div class="ph-photo social-item social-item--wide" data-tone="gold" data-reveal style="--d:1" data-caption="INSTAGRAM_04" role="img" aria-label="Placeholder — Instagram photo"></div>
+    <div class="social-columns">
+      <div class="social-col">
+        <p class="social-col-label">@aroma_bakery_coffee — Old City</p>
+        <div class="social-col-grid">
+          <a class="ph-photo social-item" data-tone="chocolate" data-reveal data-caption="Old City post" role="img" aria-label="Aroma Bakery & Coffee Instagram post" href="https://www.instagram.com/reel/DYAvGAqJi1Y/" target="_blank" rel="noopener noreferrer"></a>
+          <a class="ph-photo social-item" data-tone="beige" data-reveal style="--d:1" data-caption="Old City post" role="img" aria-label="Aroma Bakery & Coffee Instagram post" href="https://www.instagram.com/reel/DHZPilCpxY7/" target="_blank" rel="noopener noreferrer"></a>
+          <a class="ph-photo social-item" data-tone="gold" data-reveal style="--d:2" data-caption="Old City post" role="img" aria-label="Aroma Bakery & Coffee Instagram post" href="https://www.instagram.com/reel/DbGwXXPJgzs/" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </div>
+      <div class="social-col">
+        <p class="social-col-label">@aroma_bakery_ne — Northeast</p>
+        <div class="social-col-grid">
+          <div class="ph-photo social-item" data-tone="sage" data-reveal data-caption="Northeast post" role="img" aria-label="Placeholder — Instagram post"></div>
+          <div class="ph-photo social-item" data-tone="forest" data-reveal style="--d:1" data-caption="Northeast post" role="img" aria-label="Placeholder — Instagram post"></div>
+          <div class="ph-photo social-item" data-tone="beige" data-reveal style="--d:2" data-caption="Northeast post" role="img" aria-label="Placeholder — Instagram post"></div>
+        </div>
+      </div>
     </div>
     <div class="social-follow-links" data-reveal>
       <a href="https://instagram.com/aroma_bakery_coffee" target="_blank" rel="noopener noreferrer">@aroma_bakery_coffee — Old City →</a>
