@@ -837,6 +837,17 @@ img.drink-menu-art{
 }
 .menu-cats--spaced{ margin-top:clamp(40px,6vw,64px); }
 
+/* Sweet tab — finished dessert/pastry/macaron menu posters, same
+   real-artwork treatment as the Drinks tab but wider (landscape
+   multi-item layouts need more room to stay legible). */
+.food-menu-gallery{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(40px,6vw,72px);
+  max-width:1120px;
+  margin:0 auto clamp(48px,7vw,72px);
+}
+
 /* ---------- Social — 3 highlighted posts per account, side by side ---------- */
 .social-section{ background:var(--forest-black); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
 .social-columns{
