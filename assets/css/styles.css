@@ -1010,10 +1010,13 @@ a.location-value:hover{ opacity:.6; }
   overflow:hidden;
 }
 @media (min-width:900px){ .about-hero{ min-height:calc(var(--header-h) + 480px); } }
-.about-hero .ph-photo{ position:absolute; inset:0; z-index:0; }
+.about-hero .ph-photo,
+.about-hero-photo{ position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; }
 .about-hero-overlay{
   position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg, rgba(16,39,32,.6), rgba(16,39,32,.78));
+  background:
+    radial-gradient(120% 90% at 50% 38%, rgba(16,39,32,.42), rgba(16,39,32,.72) 65%),
+    linear-gradient(180deg, rgba(10,23,18,.55) 0%, rgba(10,23,18,.72) 55%, var(--forest-deep) 100%);
 }
 .about-hero-inner{ position:relative; z-index:2; padding:32px var(--gutter); max-width:720px; margin:0 auto; }
 .about-hero-inner .eyebrow{ color:var(--sage); }
