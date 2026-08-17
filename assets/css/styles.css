@@ -650,6 +650,7 @@ section{ position:relative; }
 /* ---------- Full bleed break ---------- */
 .bleed-photo{ margin:0; height:min(70vh,640px); }
 .bleed-photo .ph-photo{ min-height:100%; }
+.bleed-photo-img{ width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block; }
 
 /* ---------- Menu ---------- */
 .menu-section{ background:var(--forest-deep); }
@@ -925,44 +926,30 @@ a.location-value:hover{ opacity:.6; }
 }
 .cc-hero-head .body-lg{ margin:0 auto 8px; }
 
-/* ---------- Custom Cakes gallery — exactly 7 images, mixed editorial sizing ---------- */
-/* Desktop: 1 large hero cake + 2 supporting + 1 wide + 3 balanced
-   portrait/landscape = 7. Deliberately not a repeating equal grid. */
+/* ---------- Custom Cakes gallery — 6 images, uniform grid ---------- */
+/* Every tile the same size and aspect ratio, centered, arranged in even
+   rows — a straightforward gallery rather than a mixed editorial mosaic. */
 .cc-gallery{ background:var(--chocolate); padding:clamp(50px,8vw,90px) var(--gutter) clamp(70px,10vw,110px); }
-.cc-item{ box-shadow:0 0 0 1px rgba(183,160,106,.18); }
 .cc-gallery-grid{
-  max-width:var(--container);
+  max-width:1100px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:clamp(12px,1.6vw,22px);
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,2vw,28px);
 }
-.cc-item{ position:relative; border-radius:2px; overflow:hidden; }
-.cc-item .ph-photo,
-.cc-item-photo{ transition:transform .65s var(--ease); }
-.cc-item:hover .ph-photo,
+.cc-item{
+  position:relative; border-radius:2px; overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:0 0 0 1px rgba(183,160,106,.18);
+}
+.cc-item-photo{ transition:transform .65s var(--ease); width:100%; height:100%; object-fit:cover; display:block; }
 .cc-item:hover .cc-item-photo{ transform:scale(1.03); }
-.cc-item-photo{ width:100%; height:100%; object-fit:cover; display:block; }
 
-.cc-item-1{ grid-column:span 4; grid-row:span 2; aspect-ratio:4/5; }   /* hero cake */
-.cc-item-2{ grid-column:span 2; aspect-ratio:1/1; }                    /* supporting */
-.cc-item-3{ grid-column:span 2; aspect-ratio:1/1; }                    /* supporting */
-.cc-item-4{ grid-column:span 6; aspect-ratio:21/9; }                   /* wide */
-.cc-item-5{ grid-column:span 2; aspect-ratio:3/4; }
-.cc-item-6{ grid-column:span 2; aspect-ratio:4/3; }
-.cc-item-7{ grid-column:span 2; aspect-ratio:3/4; }
-
-@media (max-width:899px){
+@media (max-width:768px){
   .cc-gallery-grid{ grid-template-columns:repeat(2,1fr); }
-  .cc-item-1{ grid-column:span 2; grid-row:span 1; aspect-ratio:4/3; }
-  .cc-item-2,.cc-item-3,.cc-item-5,.cc-item-6,.cc-item-7{ grid-column:span 1; }
-  .cc-item-4{ grid-column:span 2; aspect-ratio:16/9; }
 }
-@media (max-width:560px){
-  .cc-gallery-grid{ grid-template-columns:1fr; }
-  .cc-item-1,.cc-item-2,.cc-item-3,.cc-item-4,.cc-item-5,.cc-item-6,.cc-item-7{
-    grid-column:span 1; aspect-ratio:4/3;
-  }
+@media (max-width:480px){
+  .cc-gallery-grid{ grid-template-columns:1fr; max-width:420px; }
 }
 
 .cc-cta{
@@ -1056,10 +1043,13 @@ a.location-value:hover{ opacity:.6; }
   display:grid; grid-template-columns:1fr; gap:clamp(28px,4vw,40px);
 }
 @media (min-width:860px){ .loc-cards-grid{ grid-template-columns:1fr 1fr; } }
-.loc-card{ display:flex; flex-direction:column; }
-.loc-card-photo{ aspect-ratio:4/3; border-radius:2px; overflow:hidden; }
-@media (min-width:860px){ .loc-card-photo{ aspect-ratio:auto; height:340px; } }
-.loc-card-body{ padding:clamp(24px,3vw,32px) 2px 0; }
+.loc-card{
+  display:flex; flex-direction:column;
+  background:var(--forest);
+  border:1px solid rgba(183,160,106,.22);
+  border-radius:2px;
+}
+.loc-card-body{ padding:clamp(36px,5vw,52px) clamp(28px,4vw,40px); }
 .loc-card-name{
   font-family:var(--font-serif); font-weight:600; color:var(--cream);
   font-size:clamp(21px,2.6vw,27px); line-height:1.25;
