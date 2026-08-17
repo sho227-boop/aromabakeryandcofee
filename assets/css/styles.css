@@ -93,9 +93,10 @@ h1,h2,h3,p{ margin:0; }
 @media (min-width:900px){ .only-desktop{ display:inline-flex; } }
 /* Custom Cakes only joins the header nav once there's genuinely room for
    it (iPad landscape and below keep it in the mobile panel instead, where
-   it already lives, rather than crowding/wrapping the header). */
+   it already lives, rather than crowding/wrapping the header). Now that
+   Instagram no longer occupies a header slot, this can join earlier. */
 .only-wide{ display:none; }
-@media (min-width:1180px){ .only-wide{ display:inline-flex; } }
+@media (min-width:1024px){ .only-wide{ display:inline-flex; } }
 
 /* ---------- Typography helpers ---------- */
 .eyebrow{
