@@ -26,14 +26,28 @@ deliberately simplified homepage), `menu.html` (the full menu),
      placeholders — none of those have been supplied yet. Swap each one for
      a real `<img>` per "Swapping in real photos" below.
 2. **Business facts are real and confirmed** — both locations' addresses,
-   phone `(445) 245-9284` / `tel:+14452459284`, hours (every day,
-   9:00 AM – 6:00 PM at both locations), and the contact email
+   phone `(445) 245-9284` / `tel:+14452459284`, and the contact email
    `aromabakerycoffe@gmail.com` (spelled exactly as provided, do not "fix"
    it) are live in `locations.html`, the footer on every page, and the
    JSON-LD schema in `index.html` (`Organization` + one `Bakery` entry per
    location). If any of these change, update all of: `locations.html`, the
    footer, the `<head>` schema, and the `tel:`/`mailto:` links scattered
    through the CTAs.
+   **Opening hours are NOT confirmed and are intentionally not shown as a
+   specific time.** Two different placeholder hours (9–6 for Old City,
+   10–7 for Northeast Philadelphia) briefly existed in an earlier pass
+   without a real source for either — both have been removed (the two
+   `.loc-card-hours` blocks on `locations.html`, both meta descriptions,
+   and the `openingHoursSpecification` blocks in `index.html`'s JSON-LD).
+   Real hours are **not necessarily the same for both locations** — the
+   site has a `LOCATIONS` array in `assets/js/main.js` with an independent
+   `hours` field per location (both currently `null`). Until confirmed,
+   `locations.html` shows a neutral "Call for current hours" fallback,
+   rendered by that same script via `[data-loc-hours="old-city"]` /
+   `[data-loc-hours="northeast-philadelphia"]`. Once real hours are known,
+   set each location's `hours` independently in `LOCATIONS` — don't assume
+   they match — and add matching `openingHoursSpecification` blocks back
+   into `index.html`'s JSON-LD (see the comment above that `<script>`).
 3. **One brand, two Instagram accounts.** Aroma is a single brand
    ("Aroma Bakery & Coffee") with two Philadelphia locations that each run
    their own Instagram: Old City is `@aroma_bakery_coffee`, Northeast
@@ -69,14 +83,41 @@ final photography.
   menu, no locations section — those live on their own pages instead, per
   the "let the imagery do the work, don't explain everything" direction.
 - `menu.html` — the full tabbed menu (Sweet / Bread / Breakfast / Lunch /
-  Coffee), moved off the homepage wholesale. The Sweet tab's dessert
-  categories use dark, editorial `.food-editorial` panels rather than a
-  text list; the Coffee tab leads with large `.drink-menu-art` artwork
-  slots for Coffee & Espresso / Tea / Matcha. Supports deep links from the
-  homepage's category cards via `menu.html#panel-<tab>` — `main.js` reads
-  that hash on load, activates the right tab, and scrolls to it (the
-  target panel starts `hidden`, so a plain anchor jump can't reach it on
-  its own).
+  Coffee), moved off the homepage wholesale. The Coffee tab leads with
+  large `.drink-menu-art` artwork slots for Coffee & Espresso / Tea /
+  Matcha — real uploaded menu graphics, untouched. Supports deep links
+  from the homepage's category cards via `menu.html#panel-<tab>` —
+  `main.js` reads that hash on load, activates the right tab, and scrolls
+  to it (the target panel starts `hidden`, so a plain anchor jump can't
+  reach it on its own).
+
+  **Sweet tab / Bakery product grid (`.product-menu`).** Croissants &
+  Pastries / Cakes & Individual Desserts / Cake Pops & Chocolate are each
+  a `.product-cat`: a clean CSS-grid catalogue of individual product
+  cutouts (`.product-grid` → `.product-item` → `.product-item-photo` +
+  `.product-item-name`), not a single dessert-poster image. Every photo
+  is a real, unaltered crop from Aroma's own `menu-pastries.jpg` /
+  `menu-desserts.jpg` artwork (see `assets/img/products/`) — both source
+  posters already shot each item isolated on a small dark studio plate
+  against a near-black ground, which is what makes clean per-item cutouts
+  possible without any masking or AI touch-up. A CSS `mask-image` radial
+  gradient fades each photo's rectangular edges to transparent so it
+  reads as a floating cutout rather than a framed thumbnail, and the
+  whole `.product-menu` band sits on `--espresso-black` (very dark
+  espresso, sampled from the real photos' own backdrop) so there's no
+  visible seam — plain forest green is too saturated/light to hide the
+  rectangle, which is why this band uses its own darker ground rather
+  than the standard `.menu-panel` background. Responsive: 5 columns
+  desktop → 4 large tablet (≤1023px) → 3 small tablet/large phone
+  (≤767px) → 2 phone (≤430px), via plain `grid-template-columns`
+  breakpoints, no horizontal scroll at any width. **Macarons** keeps the
+  original full-poster treatment (`.product-cat-poster`, `menu-macarons
+  .jpg`, unaltered) instead of individual cutouts — that photography is
+  shot on varied plates/gloved hands rather than the same isolated dark
+  studio ground the other categories' crops share, so per-flavor cutouts
+  there show hands/floral plates and look inconsistent next to the rest
+  of the grid. No prices are shown anywhere in the grid — none were
+  supplied, and none are invented.
 - `custom-cakes.html` — its own dedicated, very visual page: short intro →
   a 7-image mixed editorial gallery (`.cc-item-1`…`.cc-item-7`, one hero +
   supporting + wide + balanced portrait/landscape) → a closing "Order on

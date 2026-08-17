@@ -191,6 +191,36 @@
     });
   }
 
+  /* ---------- Location data (hours independently configurable per location) ---------- */
+  /* The two Aroma locations are NOT assumed to share the same hours —
+     each location's `hours` is its own field here, not one shared
+     string. Real, confirmed hours have not been supplied for either
+     location, so both start `null` rather than guessing; the Locations
+     page falls back to a neutral "call to confirm" line instead of
+     displaying a made-up time. Once real hours are confirmed, set each
+     location's `hours` independently, e.g.:
+       hours: 'Mon–Sat 8:00 AM – 7:00 PM, Sun 9:00 AM – 5:00 PM'
+     — they do not need to match each other. */
+  const LOCATIONS = [
+    {
+      slug: 'old-city',
+      name: 'Aroma Bakery & Coffee — Old City',
+      address: '160 N 3rd St, Philadelphia, PA',
+      hours: null,
+    },
+    {
+      slug: 'northeast-philadelphia',
+      name: 'Aroma Bakery — Northeast Philadelphia',
+      address: '1916 Welsh Rd, Philadelphia, PA 19115',
+      hours: null,
+    },
+  ];
+
+  document.querySelectorAll('[data-loc-hours]').forEach(el => {
+    const loc = LOCATIONS.find(l => l.slug === el.dataset.locHours);
+    el.textContent = (loc && loc.hours) ? loc.hours : 'Call for current hours';
+  });
+
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

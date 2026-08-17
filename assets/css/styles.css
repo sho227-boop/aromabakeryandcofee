@@ -14,6 +14,9 @@
   --ivory:       #FAF7F1;  /* soft ivory — used sparingly, contrast sections only */
   --beige:       #CDBEAA;  /* soft taupe (borders etc.) */
   --chocolate:   #4A2C21;  /* dark chocolate / espresso brown */
+  --espresso-black: #120B07; /* very dark espresso — near-black, matches the real
+                                 product photography's own studio backdrop so
+                                 isolated cutouts sit on it with no visible edge */
   --gold:        #B7A06A;  /* muted gold/copper — the site's primary metallic accent */
   --gold-soft:   rgba(183,160,106,.55);
   --text:        #17231F;  /* text dark — light-section body copy */
@@ -842,8 +845,17 @@ img.drink-menu-art{
    no heavy shadow), evenly organized rows with the name set directly
    underneath each photo — a scannable catalogue rather than a single
    framed poster. Categories are grouped with a small muted-gold heading,
-   no banner artwork between them. */
-.product-menu{ margin-bottom:clamp(48px,7vw,80px); }
+   no banner artwork between them.
+   Sits on --espresso-black rather than the standard forest green: the
+   product crops carry their own real near-black studio backdrop (sampled
+   from the source photography), and espresso is close enough to it that,
+   combined with the mask-image fade below, no rectangle is visible around
+   any photo — forest green's more saturated tone would show a hard edge. */
+.product-menu{
+  background:var(--espresso-black);
+  margin:0 calc(-1 * var(--gutter)) clamp(48px,7vw,80px);
+  padding:clamp(44px,7vw,76px) var(--gutter);
+}
 .product-cat{ margin-bottom:clamp(44px,6.5vw,72px); }
 .product-cat:last-child{ margin-bottom:0; }
 .product-cat-head{
@@ -886,12 +898,17 @@ img.drink-menu-art{
   height:100%;
   object-fit:contain;
   display:block;
-  filter:drop-shadow(0 10px 16px rgba(0,0,0,.35));
+  filter:drop-shadow(0 10px 16px rgba(0,0,0,.4));
+  /* Soft-edge mask: fades the source photo's own rectangle to transparent
+     so it reads as a floating cutout rather than a framed thumbnail,
+     without touching a single pixel of the food itself. */
+  -webkit-mask-image:radial-gradient(ellipse 62% 62% at center, #000 58%, transparent 96%);
+          mask-image:radial-gradient(ellipse 62% 62% at center, #000 58%, transparent 96%);
   transition:transform .5s var(--ease), filter .5s var(--ease);
 }
 .product-item:hover .product-item-photo{
   transform:scale(1.045);
-  filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
 }
 .product-item-name{
   margin-top:clamp(10px,1.4vw,15px);
@@ -911,6 +928,14 @@ img.drink-menu-art{
   font-style:italic;
   color:var(--sage);
 }
+
+/* Macarons keeps the single finished-poster treatment inside the same
+   product-menu band — its real photography is shot on varied plates/
+   hands rather than the same dark studio ground the other categories'
+   crops share, so isolating individual macarons the same way would show
+   hands/floral plates and look inconsistent rather than clean. */
+.product-cat-poster{ line-height:0; }
+.product-cat-poster img{ width:100%; height:auto; display:block; border-radius:2px; }
 
 /* ---------- Social — 3 highlighted posts per account, side by side ---------- */
 .social-section{ background:var(--forest-black); text-align:center; padding:clamp(80px,12vw,130px) var(--gutter); }
