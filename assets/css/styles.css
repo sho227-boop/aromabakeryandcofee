@@ -535,6 +535,14 @@ h1,h2,h3,p{ margin:0; }
   margin-bottom:30px;
 }
 .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; }
+.hero-cake-link{
+  display:inline-block; margin-top:16px;
+  font-size:13px; letter-spacing:.02em; font-weight:500;
+  color:var(--cream);
+  text-decoration:underline; text-underline-offset:3px;
+  transition:opacity .3s var(--ease);
+}
+.hero-cake-link:hover{ opacity:.7; }
 
 [data-reveal]{
   opacity:0;
