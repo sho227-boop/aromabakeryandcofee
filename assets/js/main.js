@@ -100,26 +100,6 @@
     setTimeout(() => hero && hero.classList.add('is-loaded'), 80);
   });
 
-  /* ---------- Hero parallax (subtle, rAF-throttled) ---------- */
-  if (!reduceMotion) {
-    const heroContent = document.querySelector('.hero-content');
-    let ticking = false;
-    const applyParallax = () => {
-      const y = window.scrollY;
-      const heroH = hero ? hero.offsetHeight : 0;
-      if (y < heroH && heroContent) {
-        heroContent.style.transform = `translateY(${y * 0.18}px)`;
-      }
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(applyParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
   /* ---------- Signature mousse video ---------- */
   /* Inert until the real <video id="mousseVideo"> replaces the homepage
      placeholder (see the comment above .mousse-feature in index.html) —

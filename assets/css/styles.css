@@ -396,13 +396,13 @@ h1,h2,h3,p{ margin:0; }
    symbol/type only, no background shape — it reads directly against the
    header itself, transparent hero or solid scrolled state alike. */
 .header-logo{
-  width:clamp(50px,5.8vw,64px);
+  width:clamp(58px,7.5vw,82px);
   height:auto;
   aspect-ratio:861/787;
   object-fit:contain;
   transition:width .5s var(--ease);
 }
-.site-header.is-scrolled .header-logo{ width:44px; }
+.site-header.is-scrolled .header-logo{ width:clamp(52px,6.5vw,68px); }
 .brand-line--main{
   font-family:var(--font-serif);
   font-weight:600;
@@ -475,15 +475,35 @@ h1,h2,h3,p{ margin:0; }
   color:var(--cream);
 }
 .hero-media{ position:absolute; inset:0; z-index:0; }
+/* Slow cinematic "walking past the storefront" pan — background image
+   only. --hero-pan-a/b set the start/end horizontal offset; overridden
+   smaller on mobile so the entrance stays in frame and nothing is cut
+   off. Paused until .hero.is-loaded so it never animates from an
+   unloaded/blank frame; alternate + ease-in-out gives a smooth reverse
+   with no visible jump at either end. */
 .hero-img{
-  position:absolute; inset:-4% ;
-  height:108%; width:108%;
+  position:absolute; inset:-5%;
+  height:110%; width:110%;
   object-fit:cover;
   object-position:center 30%;
-  transform:scale(1);
-  transition:transform 3.5s cubic-bezier(.16,.62,.2,1);
+  --hero-pan-a:-1.6%;
+  --hero-pan-b:1.6%;
+  transform:scale(1.04) translateX(var(--hero-pan-a));
+  animation:heroPan 14s ease-in-out infinite alternate;
+  animation-play-state:paused;
+  will-change:transform;
 }
-.hero.is-loaded .hero-img{ transform:scale(1.035); }
+.hero.is-loaded .hero-img{ animation-play-state:running; }
+@keyframes heroPan{
+  0%{ transform:scale(1.04) translateX(var(--hero-pan-a)); }
+  100%{ transform:scale(1.04) translateX(var(--hero-pan-b)); }
+}
+@media (max-width:640px){
+  .hero-img{ --hero-pan-a:-0.8%; --hero-pan-b:0.8%; animation-duration:11s; }
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-img{ animation:none !important; transform:scale(1.02) translateX(0) !important; }
+}
 .hero-scrim{
   position:absolute; inset:0;
   background:
@@ -532,9 +552,7 @@ h1,h2,h3,p{ margin:0; }
   display:flex; flex-direction:column; align-items:center; gap:8px;
   color:rgba(244,239,230,.85);
   font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
-  animation:cueBob 2.4s ease-in-out infinite;
 }
-@keyframes cueBob{ 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,8px);} }
 
 /* =========================================================
    SECTION LAYOUT — shared
