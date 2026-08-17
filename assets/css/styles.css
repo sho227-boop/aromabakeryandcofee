@@ -815,6 +815,7 @@ img.drink-menu-art{
   text-align:left;
 }
 .social-item{ border-radius:2px; overflow:hidden; }
+.social-item-photo{ width:100%; height:100%; object-fit:cover; display:block; }
 .social-item--tall{ grid-row:span 2; grid-column:span 1; }
 .social-item--wide{ grid-column:span 2; }
 
