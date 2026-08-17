@@ -683,7 +683,7 @@ section{ position:relative; }
 .bleed-photo-img{ width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block; }
 
 /* ---------- Menu ---------- */
-.menu-section{ background:var(--forest-deep); }
+.menu-section{ background:var(--forest); }
 /* Standalone menu.html has no hero above it, so reserve room for the
    fixed header instead of letting content start underneath it. */
 .menu-section--page .section-head{ padding-top:calc(var(--header-h) + clamp(40px,6vw,64px)); }
@@ -746,7 +746,7 @@ section{ position:relative; }
 
 /* Sticky mobile tab bar */
 @media (max-width:640px){
-  .menu-tabs{ position:sticky; top:var(--header-h-scrolled); z-index:20; background:var(--forest-deep); }
+  .menu-tabs{ position:sticky; top:var(--header-h-scrolled); z-index:20; background:var(--forest); }
 }
 
 /* ---------- Sweet/food tab — dark editorial gallery ---------- */
